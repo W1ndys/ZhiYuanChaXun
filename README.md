@@ -4,7 +4,7 @@
 
 已加入学校
 - [大理大学](https://act.mcsog.top/info.php)
-- [信阳师范学院](https://act.imxbt.cn)
+- [信阳师范大学](https://act.imxbt.cn)
 
 加入时请通过Pull Request上传对应源码，并更新README.md，需要标注`已加入School Robot V2计划`
 
