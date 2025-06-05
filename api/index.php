@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     }
                     echo (json_encode(value: array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
                 } else {
-                    echo (json_encode(value: $AreaScore[$_GET['province']][$_GET['major']]));
+                    echo json_encode($AreaScore[$_GET['province']][$_GET['major']]);
                 }
             }
         }
