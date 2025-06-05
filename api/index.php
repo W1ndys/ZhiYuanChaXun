@@ -328,10 +328,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <p>此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
                     href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
             <p>
-                点击链接加入群聊
-                <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
-                    【2025曲阜师范大学新生交流群】
-                </a>
+                <span
+                    style="color: #d32f2f; font-weight: bold; font-size: 1.15em; background: #fffbe6; padding: 4px 8px; border-radius: 6px; display: inline-block;">
+                    点击链接加入群聊
+                    <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer"
+                        style="color: #1976d2; font-weight: bold; text-decoration: underline;">
+                        【2025曲阜师范大学新生交流群】
+                    </a>
+                </span>
             </p>
             <p>
                 目前只整理了山东省内的数据，其他省份数据正在整理中，敬请期待！
