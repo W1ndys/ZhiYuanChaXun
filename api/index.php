@@ -1,13 +1,13 @@
 <?php
 $AreaType = array(
     '山东' => array('普通类'),
-    // '河北' => array('物理类', '历史类'),
+    '河北' => array('物理类', '历史类'),
 
     // 可继续扩展
 );
 $AreaScore = array(
     '山东' => array('普通类' => array(21199, 144676)),
-    // '河北' => array('物理类' => array(8851, 26898), '历史类' => array(5114, 16776)),
+    '河北' => array('物理类' => array(8851, 26898), '历史类' => array(5114, 16776)),
     // 可继续扩展
 
 );
@@ -73,27 +73,27 @@ $Subject = array(
     ),
     '河北' => array(
         '物理类' => array(
-            '数学与应用数学（师范）' => array('Num' => 6, 'MaxScore' => 573, 'MinScore' => 570, 'AvgScore' => 571.00, 'MaxRank' => 9549, 'MinRank' => 10271),
-            '计算机科学与技术（师范）' => array('Num' => 6, 'MaxScore' => 576, 'MinScore' => 570, 'AvgScore' => 571.50, 'MaxRank' => 8851, 'MinRank' => 10271),
-            '软件工程' => array('Num' => 4, 'MaxScore' => 571, 'MinScore' => 566, 'AvgScore' => 568.00, 'MaxRank' => 10021, 'MinRank' => 11324),
-            '电气工程及其自动化' => array('Num' => 4, 'MaxScore' => 568, 'MinScore' => 565, 'AvgScore' => 566.50, 'MaxRank' => 10814, 'MinRank' => 11636),
-            '网络工程' => array('Num' => 4, 'MaxScore' => 565, 'MinScore' => 563, 'AvgScore' => 564.00, 'MaxRank' => 11636, 'MinRank' => 12223),
-            '自动化' => array('Num' => 5, 'MaxScore' => 566, 'MinScore' => 563, 'AvgScore' => 563.80, 'MaxRank' => 11324, 'MinRank' => 12223),
-            '物理学（师范）' => array('Num' => 6, 'MaxScore' => 562, 'MinScore' => 561, 'AvgScore' => 561.17, 'MaxRank' => 12485, 'MinRank' => 12763),
-            '网络空间安全' => array('Num' => 4, 'MaxScore' => 569, 'MinScore' => 561, 'AvgScore' => 564.00, 'MaxRank' => 10530, 'MinRank' => 12763),
-            '化学（师范）' => array('Num' => 8, 'MaxScore' => 562, 'MinScore' => 560, 'AvgScore' => 560.75, 'MaxRank' => 12485, 'MinRank' => 13052),
-            '统计学' => array('Num' => 10, 'MaxScore' => 564, 'MinScore' => 559, 'AvgScore' => 560.90, 'MaxRank' => 11947, 'MinRank' => 13335),
-            '生物科学（师范）' => array('Num' => 8, 'MaxScore' => 569, 'MinScore' => 558, 'AvgScore' => 560.25, 'MaxRank' => 10530, 'MinRank' => 13641),
-            '财务管理' => array('Num' => 10, 'MaxScore' => 560, 'MinScore' => 556, 'AvgScore' => 557.40, 'MaxRank' => 13052, 'MinRank' => 14221),
-            '光电信息科学与工程' => array('Num' => 4, 'MaxScore' => 563, 'MinScore' => 556, 'AvgScore' => 559.00, 'MaxRank' => 12223, 'MinRank' => 14221),
-            '数据科学' => array('Num' => 5, 'MaxScore' => 558, 'MinScore' => 553, 'AvgScore' => 555.20, 'MaxRank' => 13641, 'MinRank' => 15144),
-            '经济学' => array('Num' => 9, 'MaxScore' => 556, 'MinScore' => 546, 'AvgScore' => 548.22, 'MaxRank' => 14221, 'MinRank' => 17434),
-            '化学工程与工艺' => array('Num' => 3, 'MaxScore' => 557, 'MinScore' => 543, 'AvgScore' => 549.00, 'MaxRank' => 13933, 'MinRank' => 18458),
-            '金融工程' => array('Num' => 4, 'MaxScore' => 543, 'MinScore' => 542, 'AvgScore' => 542.50, 'MaxRank' => 18458, 'MinRank' => 18794),
-            '材料化学' => array('Num' => 3, 'MaxScore' => 547, 'MinScore' => 540, 'AvgScore' => 543.33, 'MaxRank' => 17106, 'MinRank' => 19536),
-            '生态学' => array('Num' => 4, 'MaxScore' => 537, 'MinScore' => 529, 'AvgScore' => 532.25, 'MaxRank' => 20662, 'MinRank' => 23875),
-            '物流管理' => array('Num' => 10, 'MaxScore' => 538, 'MinScore' => 528, 'AvgScore' => 531.50, 'MaxRank' => 20265, 'MinRank' => 24247),
-            '旅游管理' => array('Num' => 4, 'MaxScore' => 540, 'MinScore' => 522, 'AvgScore' => 529.50, 'MaxRank' => 19536, 'MinRank' => 26898),
+            '数学与应用数学（师范）' => array('Num' => 6, 'MaxScore' => 573, 'MinScore' => 570, 'AvgScore' => 571.00, 'MaxRank' => 34252, 'MinRank' => 36748),
+            '计算机科学与技术（师范）' => array('Num' => 6, 'MaxScore' => 576, 'MinScore' => 570, 'AvgScore' => 571.50, 'MaxRank' => 31850, 'MinRank' => 36748),
+            '软件工程' => array('Num' => 4, 'MaxScore' => 571, 'MinScore' => 566, 'AvgScore' => 568.00, 'MaxRank' => 35924, 'MinRank' => 40370),
+            '电气工程及其自动化' => array('Num' => 4, 'MaxScore' => 568, 'MinScore' => 565, 'AvgScore' => 566.50, 'MaxRank' => 38490, 'MinRank' => 41291),
+            '网络工程' => array('Num' => 4, 'MaxScore' => 565, 'MinScore' => 563, 'AvgScore' => 564.00, 'MaxRank' => 41291, 'MinRank' => 43129),
+            '自动化' => array('Num' => 5, 'MaxScore' => 566, 'MinScore' => 563, 'AvgScore' => 563.80, 'MaxRank' => 40370, 'MinRank' => 43129),
+            '物理学（师范）' => array('Num' => 6, 'MaxScore' => 562, 'MinScore' => 561, 'AvgScore' => 561.17, 'MaxRank' => 44007, 'MinRank' => 44969),
+            '网络空间安全' => array('Num' => 4, 'MaxScore' => 569, 'MinScore' => 561, 'AvgScore' => 564.00, 'MaxRank' => 37617, 'MinRank' => 44969),
+            '化学（师范）' => array('Num' => 8, 'MaxScore' => 562, 'MinScore' => 560, 'AvgScore' => 560.75, 'MaxRank' => 44007, 'MinRank' => 45895),
+            '统计学' => array('Num' => 10, 'MaxScore' => 564, 'MinScore' => 559, 'AvgScore' => 560.90, 'MaxRank' => 42211, 'MinRank' => 46811),
+            '生物科学（师范）' => array('Num' => 8, 'MaxScore' => 569, 'MinScore' => 558, 'AvgScore' => 560.25, 'MaxRank' => 37617, 'MinRank' => 47783),
+            '财务管理' => array('Num' => 10, 'MaxScore' => 560, 'MinScore' => 556, 'AvgScore' => 557.40, 'MaxRank' => 45895, 'MinRank' => 49791),
+            '光电信息科学与工程' => array('Num' => 4, 'MaxScore' => 563, 'MinScore' => 556, 'AvgScore' => 559.00, 'MaxRank' => 43129, 'MinRank' => 49791),
+            '数据科学' => array('Num' => 5, 'MaxScore' => 558, 'MinScore' => 553, 'AvgScore' => 555.20, 'MaxRank' => 47783, 'MinRank' => 52953),
+            '经济学' => array('Num' => 9, 'MaxScore' => 556, 'MinScore' => 546, 'AvgScore' => 548.22, 'MaxRank' => 49791, 'MinRank' => 60449),
+            '化学工程与工艺' => array('Num' => 3, 'MaxScore' => 557, 'MinScore' => 543, 'AvgScore' => 549.00, 'MaxRank' => 48790, 'MinRank' => 63909),
+            '金融工程' => array('Num' => 4, 'MaxScore' => 543, 'MinScore' => 542, 'AvgScore' => 542.50, 'MaxRank' => 63909, 'MinRank' => 65074),
+            '材料化学' => array('Num' => 3, 'MaxScore' => 547, 'MinScore' => 540, 'AvgScore' => 543.33, 'MaxRank' => 59388, 'MinRank' => 67377),
+            '生态学' => array('Num' => 4, 'MaxScore' => 537, 'MinScore' => 529, 'AvgScore' => 532.25, 'MaxRank' => 70986, 'MinRank' => 80942),
+            '物流管理' => array('Num' => 10, 'MaxScore' => 538, 'MinScore' => 528, 'AvgScore' => 531.50, 'MaxRank' => 69761, 'MinRank' => 82247),
+            '旅游管理' => array('Num' => 4, 'MaxScore' => 540, 'MinScore' => 522, 'AvgScore' => 529.50, 'MaxRank' => 67377, 'MinRank' => 90382),
         ),
         '历史类' => array(
             '法学' => array('Num' => 4, 'MaxScore' => 595, 'MinScore' => 592, 'AvgScore' => 593.25, 'MaxRank' => 5114, 'MinRank' => 5605),
@@ -108,6 +108,7 @@ $Subject = array(
             '日语（师范）' => array('Num' => 6, 'MaxScore' => 562, 'MinScore' => 548, 'AvgScore' => 552.83, 'MaxRank' => 12485, 'MinRank' => 16776),
         ),
     ),
+
 );
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['type'])) {
