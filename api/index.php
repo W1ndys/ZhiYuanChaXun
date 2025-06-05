@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Easy-QFNU-志愿查询</title>
+    <title>Easy-QFNU-志愿帮填</title>
     <style>
         :root {
             --main-color: #3A1A09;
@@ -294,8 +294,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <body>
     <div id="app">
         <div class="card">
-            <h1>曲阜师范大学志愿查询</h1>
-            <p>此页面查询结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
+            <h1>曲阜师范大学志愿帮填</h1>
+            <p>此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
+                    href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
             <p>
                 点击链接加入群聊
                 <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
@@ -316,14 +317,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <option v-for="major in majorList" :key="major" :value="major">{{major}}</option>
                 </select>
                 <label for="rank">位次</label>
-                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getSubject" placeholder="请输入位次" />
+                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getSubject"
+                    placeholder="请输入位次" />
             </form>
             <div style="margin-top:12px;color:var(--main-color);font-weight:500;">
                 最高排名：{{maxRank}}&nbsp;最低排名：{{minRank}}
             </div>
         </div>
         <div class="card">
-            <h2>高于排名的专业</h2>
+            <h2>高于排名的专业（冲一冲）</h2>
             <div class="table-wrap">
                 <table v-if="form.rank>0 && subjectList.high_major && subjectList.high_major.length">
                     <thead>
@@ -353,7 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </div>
         </div>
         <div class="card">
-            <h2>接近排名的专业</h2>
+            <h2>接近排名的专业（稳一稳）</h2>
             <div class="table-wrap">
                 <table v-if="form.rank>0 && subjectList.middle_major && subjectList.middle_major.length">
                     <thead>
@@ -383,7 +385,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </div>
         </div>
         <div class="card">
-            <h2>低于排名的专业</h2>
+            <h2>低于排名的专业（保一保）</h2>
             <div class="table-wrap">
                 <table v-if="form.rank>0 && subjectList.low_major && subjectList.low_major.length">
                     <thead>
@@ -413,12 +415,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </div>
         </div>
         <div class="card qr">
-            <img src="qrcode.jpg" alt="交流群二维码" style="width: 400px; height: 400px;max-width:100%;border-radius:16px;box-shadow:0 2px 16px rgba(58,26,9,0.10);border:1px solid #eee;" />
+            <img src="qrcode.jpg" alt="交流群二维码"
+                style="width: 400px; height: 400px;max-width:100%;border-radius:16px;box-shadow:0 2px 16px rgba(58,26,9,0.10);border:1px solid #eee;" />
         </div>
         <div class="footer">
-            <p>Fork by W1ndys <a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
-            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b> 咨询！</p>
-            <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a href="https://mcsog.top/">f00001111</a></p>
+            <p>Fork and Refactor by W1ndys <a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
+            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b> 或QQ号<b>2769731875</b>咨询！</p>
+            <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a
+                    href="https://mcsog.top/">f00001111</a></p>
             <p>已加入School Robot V2计划</p>
 
         </div>
@@ -486,8 +490,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     this.high_text = "你的排名超过了大多数专业哦~";
                     this.middle_text = "你的排名可能不太合适";
                     fetch(
-                            `?type=rank&province=${this.form.province}&major=${this.form.major}&rank=${this.form.rank}`
-                        )
+                        `?type=rank&province=${this.form.province}&major=${this.form.major}&rank=${this.form.rank}`
+                    )
                         .then((response) => response.json())
                         .then((data) => {
                             this.subjectList = data;
