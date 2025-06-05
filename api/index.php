@@ -93,10 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $middle_major = array();
                     $low_major = array();
                     foreach ($Subject[$_GET['province']][$_GET['major']] as $key => $value) {
-                        if ($rank < $value['MaxRank']) {
+                        if ($rank > $value['MinRank']) {
                             // 冲一冲
                             array_push($high_major, array('Subject' => $key) + $value);
-                        } else if ($rank > $value['MinRank']) {
+                        } else if ($rank < $value['MaxRank']) {
                             // 保一保
                             array_push($low_major, array('Subject' => $key) + $value);
                         } else {
@@ -348,7 +348,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </div>
         </div>
         <div class="card">
-            <h2>接近排名的专业（稳一稳）</h2>
+            <h2>接近排名的专业（试一试）</h2>
             <div class="table-wrap">
                 <table v-if="form.rank>0 && subjectList.middle_major && subjectList.middle_major.length">
                     <thead>
