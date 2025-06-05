@@ -223,19 +223,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             font-weight: 500;
         }
 
-        .form-row select,
-        .form-row input[type="number"] {
+        .form-row select {
             border: var(--border);
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 1rem;
+            border-radius: 16px;
+            padding: 12px 18px;
+            font-size: 1.12rem;
             outline: none;
-            transition: border 0.2s;
+            transition: border 0.2s, box-shadow 0.25s, background 0.2s;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(58, 26, 9, 0.10);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            position: relative;
+            color: var(--main-color);
         }
 
         .form-row select:focus,
-        .form-row input[type="number"]:focus {
-            border-color: var(--main-color);
+        .form-row select:hover {
+            border-color: #1976d2;
+            box-shadow: 0 4px 20px rgba(25, 118, 210, 0.13);
+            background: #f5faff;
+        }
+
+        .form-row select::-ms-expand {
+            display: none;
+        }
+
+        .form-row select {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%231976d2" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 20px 20px;
+        }
+
+        /* 美化数字输入框 */
+        .form-row input[type="number"] {
+            border: var(--border);
+            border-radius: 16px;
+            padding: 12px 18px;
+            font-size: 1.12rem;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.25s, background 0.2s;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(58, 26, 9, 0.10);
+            color: var(--main-color);
+        }
+
+        .form-row input[type="number"]:focus,
+        .form-row input[type="number"]:hover {
+            border-color: #1976d2;
+            box-shadow: 0 4px 20px rgba(25, 118, 210, 0.13);
+            background: #f5faff;
+        }
+
+        /* 去除input数字框默认箭头 */
+        .form-row input[type="number"]::-webkit-outer-spin-button,
+        .form-row input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .form-row input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        @media (max-width: 600px) {
+
+            .form-row select,
+            .form-row input[type="number"] {
+                font-size: 1.08em;
+                padding: 10px 12px;
+            }
         }
 
         .table-wrap {
