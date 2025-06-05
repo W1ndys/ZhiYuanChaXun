@@ -93,14 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $middle_major = array();
                     $low_major = array();
                     foreach ($Subject[$_GET['province']][$_GET['major']] as $key => $value) {
-                        if ($rank < $value['MinRank']) {
-                            // 高于排名的专业（冲一冲）
+                        if ($rank < $value['MaxRank']) {
+                            // 冲一冲
                             array_push($high_major, array('Subject' => $key) + $value);
-                        } else if ($rank > $value['MaxRank']) {
-                            // 低于排名的专业（保一保）
+                        } else if ($rank > $value['MinRank']) {
+                            // 保一保
                             array_push($low_major, array('Subject' => $key) + $value);
                         } else {
-                            // 接近排名的专业（稳一稳）
+                            // 稳一稳
                             array_push($middle_major, array('Subject' => $key) + $value);
                         }
                     }
