@@ -310,7 +310,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <option v-for="major in majorList" :key="major" :value="major">{{major}}</option>
                 </select>
                 <label for="rank">位次</label>
-                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getSubject"
+                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getRank"
                     placeholder="请输入位次" />
             </form>
             <div style="margin-top:12px;color:var(--main-color);font-weight:500;">
