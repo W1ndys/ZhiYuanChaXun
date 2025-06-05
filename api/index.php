@@ -1,14 +1,13 @@
 <?php
 $AreaType = array(
     '山东' => array('普通类'),
-    '江苏' => array('普通类', '物理类'),
-    '北京' => array('综合改革'),
+
     // 可继续扩展
 );
 $AreaScore = array(
     '山东' => array('普通类' => array(21199, 144676)),
-    '江苏' => array('普通类' => array(10000, 80000), '物理类' => array(12000, 90000)),
-    '北京' => array('综合改革' => array(5000, 30000)),
+    // 可继续扩展
+
 );
 $Subject = array(
     '山东' => array(
@@ -70,53 +69,41 @@ $Subject = array(
             '生态学' => array('Num' => 0, 'MaxScore' => 531, 'MinScore' => 515, 'AvgScore' => 519.30, 'MaxRank' => 110277, 'MinRank' => 144676),
         )
     ),
-    '江苏' => array(
-        '普通类' => array(
-            '经济学' => array('Num' => 0, 'MaxScore' => 600, 'MinScore' => 570, 'AvgScore' => 580, 'MaxRank' => 10000, 'MinRank' => 20000),
-        ),
-        '物理类' => array(
-            '物理学' => array('Num' => 0, 'MaxScore' => 590, 'MinScore' => 560, 'AvgScore' => 575, 'MaxRank' => 12000, 'MinRank' => 25000),
-        ),
-    ),
-    '北京' => array(
-        '综合改革' => array(
-            '法学' => array('Num' => 0, 'MaxScore' => 610, 'MinScore' => 580, 'AvgScore' => 595, 'MaxRank' => 5000, 'MinRank' => 10000),
-        ),
-    ),
+
 );
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['type'])) {
         if ($_GET['type'] === 'area') {
             if (isset($_GET['province'])) {
-                echo (json_encode($AreaType[$_GET['province']]));
+                echo (json_encode(value: $AreaType[$_GET['province']]));
             } else {
-                echo (json_encode(array_keys($AreaType)));
+                echo (json_encode(value: array_keys(array: $AreaType)));
             }
         } else if ($_GET['type'] === 'major') {
             if (isset($_GET['province']) && isset($AreaType[$_GET['province']])) {
-                echo (json_encode($AreaType[$_GET['province']]));
+                echo (json_encode(value: $AreaType[$_GET['province']]));
             } else {
-                echo json_encode([]);
+                echo json_encode(value: []);
             }
         } else if ($_GET['type'] === 'rank') {
             if (isset($_GET['province']) && isset($_GET['major'])) {
                 if (isset($_GET['rank']) && $_GET['rank'] != '') {
-                    $rank = intval($_GET['rank']);
+                    $rank = intval(value: $_GET['rank']);
                     $high_major = array();
                     $middle_major = array();
                     $low_major = array();
                     foreach ($Subject[$_GET['province']][$_GET['major']] as $key => $value) {
                         if ($value['MaxRank'] >= $rank) {
-                            array_push($low_major, array('Subject' => $key) + $value);
+                            array_push(array: $low_major, values: array('Subject' => $key) + $value);
                         } else if ($value['MinRank'] < $rank) {
-                            array_push($high_major, array('Subject' => $key) + $value);
+                            array_push(array: $high_major, values: array('Subject' => $key) + $value);
                         } else {
-                            array_push($middle_major, array('Subject' => $key) + $value);
+                            array_push(array: $middle_major, values: array('Subject' => $key) + $value);
                         }
                     }
-                    echo (json_encode(array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
+                    echo (json_encode(value: array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
                 } else {
-                    echo (json_encode($AreaScore[$_GET['province']][$_GET['major']]));
+                    echo (json_encode(value: $AreaScore[$_GET['province']][$_GET['major']]));
                 }
             }
         }
@@ -302,6 +289,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
                     【2025曲阜师范大学新生交流群】
                 </a>
+            </p>
+            <p>
+                目前只整理了山东省内的数据，其他省份数据正在整理中，敬请期待！
             </p>
         </div>
         <div class="card">
