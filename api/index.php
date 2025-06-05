@@ -306,7 +306,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="card">
             <form class="form-row" @submit.prevent>
                 <label for="province">省份</label>
-                <select id="province" v-model="form.province">
+                <select id="province" v-model="form.province" @change="getMajor">
                     <option value="">请选择省份</option>
                     <option v-for="province in provinceList" :key="province" :value="province">{{province}}</option>
                 </select>
