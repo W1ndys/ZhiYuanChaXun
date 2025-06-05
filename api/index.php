@@ -415,7 +415,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="footer">
             <p>Fork and Refactor by W1ndys | Easy-QFNU | 微信公众号【W1ndys】 <a
                     href="https://qm.qq.com/q/nc6EADciVq">W1ndys</a></p>
-            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b> 或QQ号<b>2769731875</b>咨询！</p>
+            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b>
+                或QQ号<b>2769731875</b>或邮箱<b>w1ndys@qfnu.edu.cn</b>咨询！</p>
             <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a
                     href="https://mcsog.top/">f00001111</a></p>
             <p>已加入School Robot V2计划</p>
