@@ -416,7 +416,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
         <div class="card qr">
             <img src="qrcode.jpg" alt="交流群二维码"
-                style="width: 400px; height: 400px;max-width:100%;border-radius:16px;box-shadow:0 2px 16px rgba(58,26,9,0.10);border:1px solid #eee;" />
+                style="width: min(400px, 40vw); height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
         </div>
         <div class="footer">
             <p>Fork and Refactor by W1ndys <a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
