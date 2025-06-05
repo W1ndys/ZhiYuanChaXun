@@ -93,12 +93,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $middle_major = array();
                     $low_major = array();
                     foreach ($Subject[$_GET['province']][$_GET['major']] as $key => $value) {
-                        if ($value['MaxRank'] >= $rank) {
-                            array_push(array: $low_major, values: array('Subject' => $key) + $value);
-                        } else if ($value['MinRank'] < $rank) {
-                            array_push(array: $high_major, values: array('Subject' => $key) + $value);
+                        if ($rank < $value['MinRank']) {
+                            // 高于排名的专业（冲一冲）
+                            array_push($high_major, array('Subject' => $key) + $value);
+                        } else if ($rank > $value['MaxRank']) {
+                            // 低于排名的专业（保一保）
+                            array_push($low_major, array('Subject' => $key) + $value);
                         } else {
-                            array_push(array: $middle_major, values: array('Subject' => $key) + $value);
+                            // 接近排名的专业（稳一稳）
+                            array_push($middle_major, array('Subject' => $key) + $value);
                         }
                     }
                     echo (json_encode(value: array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
@@ -406,7 +409,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
         <div class="card qr">
             <img src="qrcode.png" alt="交流群二维码"
-                style="display: block; margin: 0 auto; width: 100%; max-width: 350px; aspect-ratio: 1/1; height: auto; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee;" />
+                style="width: min(400px, 40vw); height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
         </div>
         <div class="footer">
             <p>Fork and Refactor by W1ndys | Easy-QFNU | 微信公众号【W1ndys】 <a
