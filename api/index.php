@@ -75,20 +75,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['type'])) {
         if ($_GET['type'] === 'area') {
             if (isset($_GET['province'])) {
-                echo (json_encode(value: $AreaType[$_GET['province']]));
+                echo (json_encode($AreaType[$_GET['province']]));
             } else {
-                echo (json_encode(value: array_keys(array: $AreaType)));
+                echo (json_encode(array_keys($AreaType)));
             }
         } else if ($_GET['type'] === 'major') {
             if (isset($_GET['province']) && isset($AreaType[$_GET['province']])) {
-                echo (json_encode(value: $AreaType[$_GET['province']]));
+                echo (json_encode($AreaType[$_GET['province']]));
             } else {
-                echo json_encode(value: []);
+                echo json_encode([]);
             }
         } else if ($_GET['type'] === 'rank') {
             if (isset($_GET['province']) && isset($_GET['major'])) {
                 if (isset($_GET['rank']) && $_GET['rank'] != '') {
-                    $rank = intval(value: $_GET['rank']);
+                    $rank = intval($_GET['rank']);
                     $high_major = array();
                     $middle_major = array();
                     $low_major = array();
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             array_push($middle_major, array('Subject' => $key) + $value);
                         }
                     }
-                    echo (json_encode(value: array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
+                    echo (json_encode(array('high_major' => $high_major, 'middle_major' => $middle_major, 'low_major' => $low_major)));
                 } else {
                     echo json_encode($AreaScore[$_GET['province']][$_GET['major']]);
                 }
