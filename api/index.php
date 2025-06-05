@@ -104,72 +104,297 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <script src="https://act.mcsog.top/js/vue.global.js"></script>
-    <link rel="stylesheet" href="https://act.mcsog.top/css/index.css">
-    <script src="https://act.mcsog.top/js/index.full.js"></script>
     <title>Easy-QFNU-志愿查询</title>
+    <style>
+        :root {
+            --main-color: #3A1A09;
+            --accent-color: #4e2e1f;
+            --bg-color: #f7f7fa;
+            --card-bg: #fff;
+            --shadow: 0 4px 24px rgba(58, 26, 9, 0.08);
+            --radius: 18px;
+            --text-color: #222;
+            --border: 1px solid #ececec;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans', Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        #app {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 16px 32px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px 20px;
+            border: var(--border);
+            margin-bottom: 16px;
+        }
+
+        h1,
+        h2 {
+            color: var(--main-color);
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: var(--main-color);
+            text-decoration: underline;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .form-row label {
+            min-width: 60px;
+            font-weight: 500;
+        }
+
+        .form-row select,
+        .form-row input[type="number"] {
+            border: var(--border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-row select:focus,
+        .form-row input[type="number"]:focus {
+            border-color: var(--main-color);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+        }
+
+        th,
+        td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        th {
+            background: #f5f3f2;
+            color: var(--main-color);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .qr {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.98em;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            #app {
+                padding: 8px 2vw;
+            }
+
+            .card {
+                padding: 14px 6px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            h2 {
+                font-size: 1.1em;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+                align-items: stretch;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 0.95em;
+            }
+
+            .qr img {
+                width: 90vw !important;
+                height: auto !important;
+                max-width: 350px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <h1>曲阜师范大学志愿查询</h1>
-        <p>此页面查询结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
-        <p>
-            点击链接加入群聊
-            <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
-                【2025曲阜师范大学新生交流群】
-            </a>
-        </p>
-        <el-form :model="form" :inline="true">
-            <el-form-item label="省份">
-                <el-select v-model="form.province" placeholder="请选择省份" style="width:150px">
-                    <el-option label="山东" value="山东"></el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item label="科类">
-                <el-select v-model="form.major" placeholder="请选择科类" style="width:150px">
-                    <el-option label="普通类" value="普通类"></el-option>
-                </el-select>
-            </el-form-item>
-            <el-form-item label="位次">
-                <el-input-number v-model="form.rank" :min="0" :max="5000000" @change="getSubject" style="width:150px" />
-            </el-form-item>
-        </el-form>
-        <p>最高排名：{{maxRank}}&nbsp;最低排名：{{minRank}}</p>
-        <h2>高于排名的专业</h2>
-        <el-table v-if="form.rank>0" :data="subjectList.high_major" style="width: 100%" :empty-text="high_text">
-            <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
-            <el-table-column prop="MaxScore" label="最高分"></el-table-column>
-            <el-table-column prop="MinScore" label="最低分"></el-table-column>
-            <el-table-column prop="AvgScore" label="平均分"></el-table-column>
-            <el-table-column prop="MaxRank" label="最高排名"></el-table-column>
-            <el-table-column prop="MinRank" label="最低排名"></el-table-column>
-        </el-table>
-        <h2>接近排名的专业</h2>
-        <el-table v-if="form.rank>0" :data="subjectList.middle_major" style="width: 100%" :empty-text="middle_text">
-            <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
-            <el-table-column prop="MaxScore" label="最高分"></el-table-column>
-            <el-table-column prop="MinScore" label="最低分"></el-table-column>
-            <el-table-column prop="AvgScore" label="平均分"></el-table-column>
-            <el-table-column prop="MaxRank" label="最高排名"></el-table-column>
-            <el-table-column prop="MinRank" label="最低排名"></el-table-column>
-        </el-table>
-        <h2>低于排名的专业</h2>
-        <el-table v-if="form.rank>0" :data="subjectList.low_major" style="width: 100%" empty-text="没有数据">
-            <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
-            <el-table-column prop="MaxScore" label="最高分"></el-table-column>
-            <el-table-column prop="MinScore" label="最低分"></el-table-column>
-            <el-table-column prop="AvgScore" label="平均分"></el-table-column>
-            <el-table-column prop="MaxRank" label="最高排名"></el-table-column>
-            <el-table-column prop="MinRank" label="最低排名"></el-table-column>
-        </el-table>
-        <el-image style="width: 400px; height: 400px" src="https://act.mcsog.top/qr.png"></el-image>
-        <p>Fork by W1ndys<a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
-        <p>Powered by <a href="https://dlusec.cn/">曲阜师范大学网络安全协会</a>&amp;MCSOG&amp;<a href="https://mcsog.top/">f00001111</a></p>
-        <p>已加入School Robot V2计划</p>
+        <div class="card">
+            <h1>曲阜师范大学志愿查询</h1>
+            <p>此页面查询结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
+            <p>
+                点击链接加入群聊
+                <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
+                    【2025曲阜师范大学新生交流群】
+                </a>
+            </p>
+        </div>
+        <div class="card">
+            <form class="form-row" @submit.prevent>
+                <label for="province">省份</label>
+                <select id="province" v-model="form.province">
+                    <option value="">请选择省份</option>
+                    <option value="山东">山东</option>
+                </select>
+                <label for="major">科类</label>
+                <select id="major" v-model="form.major">
+                    <option value="">请选择科类</option>
+                    <option value="普通类">普通类</option>
+                </select>
+                <label for="rank">位次</label>
+                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getSubject" placeholder="请输入位次" />
+            </form>
+            <div style="margin-top:12px;color:var(--main-color);font-weight:500;">
+                最高排名：{{maxRank}}&nbsp;最低排名：{{minRank}}
+            </div>
+        </div>
+        <div class="card">
+            <h2>高于排名的专业</h2>
+            <div class="table-wrap">
+                <table v-if="form.rank>0 && subjectList.high_major && subjectList.high_major.length">
+                    <thead>
+                        <tr>
+                            <th>专业</th>
+                            <th>招生人数(0表示暂无数据)</th>
+                            <th>最高分</th>
+                            <th>最低分</th>
+                            <th>平均分</th>
+                            <th>最高排名</th>
+                            <th>最低排名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in subjectList.high_major" :key="item.Subject">
+                            <td>{{item.Subject}}</td>
+                            <td>{{item.Num}}</td>
+                            <td>{{item.MaxScore}}</td>
+                            <td>{{item.MinScore}}</td>
+                            <td>{{item.AvgScore}}</td>
+                            <td>{{item.MaxRank}}</td>
+                            <td>{{item.MinRank}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else style="color:#aaa;text-align:center;padding:16px 0;">{{high_text}}</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>接近排名的专业</h2>
+            <div class="table-wrap">
+                <table v-if="form.rank>0 && subjectList.middle_major && subjectList.middle_major.length">
+                    <thead>
+                        <tr>
+                            <th>专业</th>
+                            <th>招生人数(0表示暂无数据)</th>
+                            <th>最高分</th>
+                            <th>最低分</th>
+                            <th>平均分</th>
+                            <th>最高排名</th>
+                            <th>最低排名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in subjectList.middle_major" :key="item.Subject">
+                            <td>{{item.Subject}}</td>
+                            <td>{{item.Num}}</td>
+                            <td>{{item.MaxScore}}</td>
+                            <td>{{item.MinScore}}</td>
+                            <td>{{item.AvgScore}}</td>
+                            <td>{{item.MaxRank}}</td>
+                            <td>{{item.MinRank}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else style="color:#aaa;text-align:center;padding:16px 0;">{{middle_text}}</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>低于排名的专业</h2>
+            <div class="table-wrap">
+                <table v-if="form.rank>0 && subjectList.low_major && subjectList.low_major.length">
+                    <thead>
+                        <tr>
+                            <th>专业</th>
+                            <th>招生人数(0表示暂无数据)</th>
+                            <th>最高分</th>
+                            <th>最低分</th>
+                            <th>平均分</th>
+                            <th>最高排名</th>
+                            <th>最低排名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in subjectList.low_major" :key="item.Subject">
+                            <td>{{item.Subject}}</td>
+                            <td>{{item.Num}}</td>
+                            <td>{{item.MaxScore}}</td>
+                            <td>{{item.MinScore}}</td>
+                            <td>{{item.AvgScore}}</td>
+                            <td>{{item.MaxRank}}</td>
+                            <td>{{item.MinRank}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div v-else style="color:#aaa;text-align:center;padding:16px 0;">没有数据</div>
+            </div>
+        </div>
+        <div class="card qr">
+            <img src="qrcode_1749103002632.jpg" alt="交流群二维码" style="width: 400px; height: 400px;max-width:100%;border-radius:16px;box-shadow:0 2px 16px rgba(58,26,9,0.10);border:1px solid #eee;" />
+        </div>
+        <div class="footer">
+            <p>Fork by W1ndys <a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
+            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b> 咨询！</p>
+            <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a href="https://mcsog.top/">f00001111</a></p>
+            <p>已加入School Robot V2计划</p>
+
+        </div>
     </div>
     <script>
         const App = {
@@ -231,7 +456,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             },
         };
         const app = Vue.createApp(App);
-        app.use(ElementPlus);
         app.mount("#app");
     </script>
 </body>
