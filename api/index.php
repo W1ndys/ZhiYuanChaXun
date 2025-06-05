@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </style>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-    <script>LA.init({ id: "3LXM1Spq74C2Vg9h", ck: "3LXM1Spq74C2Vg9h" })</script>
+    <script>LA.init({ id: "3LXM1Spq74C2Vg9h", ck: "3LXM1Spq74C2Vg9h", autoTrack: true, hashMode: true })</script>
 </head>
 
 <body>
