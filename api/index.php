@@ -3,7 +3,7 @@ $AreaType = array(
     '山东' => array('普通类')
 );
 $AreaScore = array(
-    '山东' => array('普通类' => array(71818, 157763))
+    '山东' => array('普通类' => array(21199, 144676))
 );
 $Subject = array(
     '山东' => array(
@@ -82,8 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <body>
     <div id="app">
         <h1>曲阜师范大学志愿查询</h1>
-        <p>此页面查询结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a href="2023年普通类录取情况统计表">曲阜师范大学2023级录取情况</a></p>
-        <p>曲阜师范大学贴吧2024级迎新群：916020426</p>
+        <p>此页面查询结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
+        <p>
+            点击链接加入群聊
+            <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer">
+                【2025曲阜师范大学新生交流群】
+            </a>
+        </p>
         <el-form :model="form" :inline="true">
             <el-form-item label="省份">
                 <el-select v-model="form.province" placeholder="请选择省份" style="width:150px">
@@ -103,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <h2>高于排名的专业</h2>
         <el-table v-if="form.rank>0" :data="subjectList.high_major" style="width: 100%" :empty-text="high_text">
             <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数"></el-table-column>
+            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
             <el-table-column prop="MaxScore" label="最高分"></el-table-column>
             <el-table-column prop="MinScore" label="最低分"></el-table-column>
             <el-table-column prop="AvgScore" label="平均分"></el-table-column>
@@ -113,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <h2>接近排名的专业</h2>
         <el-table v-if="form.rank>0" :data="subjectList.middle_major" style="width: 100%" :empty-text="middle_text">
             <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数"></el-table-column>
+            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
             <el-table-column prop="MaxScore" label="最高分"></el-table-column>
             <el-table-column prop="MinScore" label="最低分"></el-table-column>
             <el-table-column prop="AvgScore" label="平均分"></el-table-column>
@@ -123,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <h2>低于排名的专业</h2>
         <el-table v-if="form.rank>0" :data="subjectList.low_major" style="width: 100%" empty-text="没有数据">
             <el-table-column prop="Subject" label="专业"></el-table-column>
-            <el-table-column prop="Num" label="招生人数"></el-table-column>
+            <el-table-column prop="Num" label="招生人数(0表示暂无数据)"></el-table-column>
             <el-table-column prop="MaxScore" label="最高分"></el-table-column>
             <el-table-column prop="MinScore" label="最低分"></el-table-column>
             <el-table-column prop="AvgScore" label="平均分"></el-table-column>
@@ -131,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <el-table-column prop="MinRank" label="最低排名"></el-table-column>
         </el-table>
         <el-image style="width: 400px; height: 400px" src="https://act.mcsog.top/qr.png"></el-image>
+        <p>Fork by W1ndys<a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
         <p>Powered by <a href="https://dlusec.cn/">曲阜师范大学网络安全协会</a>&amp;MCSOG&amp;<a href="https://mcsog.top/">f00001111</a></p>
         <p>已加入School Robot V2计划</p>
     </div>
