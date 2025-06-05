@@ -405,11 +405,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             </div>
         </div>
         <div class="card qr">
-            <img src="qrcode.jpg" alt="交流群二维码"
-                style="width: min(400px, 40vw); height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
+            <img src="qrcode.png" alt="交流群二维码"
+                style="display: block; margin: 0 auto; width: 100%; max-width: 350px; aspect-ratio: 1/1; height: auto; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee;" />
         </div>
         <div class="footer">
-            <p>Fork and Refactor by W1ndys <a href="https://easy-qfnu.top">Easy-QFNU | W1ndys | 微信公众号【W1ndys】</a></p>
+            <p>Fork and Refactor by W1ndys | Easy-QFNU | 微信公众号【W1ndys】 <a
+                    href="https://qm.qq.com/q/nc6EADciVq">W1ndys</a></p>
             <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b> 或QQ号<b>2769731875</b>咨询！</p>
             <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a
                     href="https://mcsog.top/">f00001111</a></p>
