@@ -262,6 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             }
         }
     </style>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
 
 <body>
