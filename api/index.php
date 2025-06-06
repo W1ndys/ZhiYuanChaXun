@@ -190,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Easy-QFNU-志愿帮填</title>
+    <title>曲阜师范大学-志愿帮填</title>
     <style>
         :root {
             --main-color: #3A1A09;
@@ -417,7 +417,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <div id="app">
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
-            <p>此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
+            <p>本网站为22级师哥发电设计，与学校无任何关系，特此声明。此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
                     href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
             <p>
                 <span
@@ -447,9 +447,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <option v-for="major in majorList" :key="major" :value="major">{{major}}</option>
                 </select>
                 <label for="rank">位次</label>
-                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000"
-                    placeholder="请输入位次" />
-                <button type="button" @click="onQuery" style="margin-left:16px;padding:10px 24px;border-radius:12px;background:#1976d2;color:#fff;border:none;font-size:1.08em;cursor:pointer;">查询</button>
+                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" placeholder="请输入位次" />
+                <button type="button" @click="onQuery"
+                    style="margin-left:16px;padding:10px 24px;border-radius:12px;background:#1976d2;color:#fff;border:none;font-size:1.08em;cursor:pointer;">查询</button>
             </form>
             <div style="margin-top:12px;color:var(--main-color);font-weight:500;">
                 最高排名：{{maxRank}}&nbsp;最低排名：{{minRank}}
