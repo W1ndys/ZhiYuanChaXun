@@ -447,8 +447,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <option v-for="major in majorList" :key="major" :value="major">{{major}}</option>
                 </select>
                 <label for="rank">位次</label>
-                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000" @change="getRank"
+                <input id="rank" type="number" v-model="form.rank" min="0" max="5000000"
                     placeholder="请输入位次" />
+                <button type="button" @click="onQuery" style="margin-left:16px;padding:10px 24px;border-radius:12px;background:#1976d2;color:#fff;border:none;font-size:1.08em;cursor:pointer;">查询</button>
             </form>
             <div style="margin-top:12px;color:var(--main-color);font-weight:500;">
                 最高排名：{{maxRank}}&nbsp;最低排名：{{minRank}}
@@ -614,7 +615,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         });
                     this.high_text = "你的排名超过了大多数专业哦~";
                     this.middle_text = "你的排名可能不太合适";
-                    this.getSubject();
                 },
                 getSubject() {
                     if (this.form.rank == 0 || this.form.major == "" || this.form.province == "") {
@@ -632,6 +632,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             this.subjectList = data;
                         });
                 },
+                onQuery() {
+                    this.getRank();
+                    this.getSubject();
+                }
             },
             data() {
                 return {
