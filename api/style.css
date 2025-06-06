@@ -1,0 +1,216 @@
+/* 从index.php迁移的样式 */
+:root {
+    --main-color: #3A1A09;
+    --accent-color: #4e2e1f;
+    --bg-color: #f7f7fa;
+    --card-bg: #fff;
+    --shadow: 0 4px 24px rgba(58, 26, 9, 0.08);
+    --radius: 18px;
+    --text-color: #222;
+    --border: 1px solid #ececec;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+#app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 16px 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px 20px;
+    border: var(--border);
+    margin-bottom: 16px;
+}
+
+h1,
+h2 {
+    color: var(--main-color);
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.form-row label {
+    min-width: 60px;
+    font-weight: 500;
+}
+
+.form-row select {
+    border: var(--border);
+    border-radius: 16px;
+    padding: 12px 18px;
+    font-size: 1.12rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.25s, background 0.2s;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(58, 26, 9, 0.10);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    color: var(--main-color);
+}
+
+.form-row select:focus,
+.form-row select:hover {
+    border-color: #1976d2;
+    box-shadow: 0 4px 20px rgba(25, 118, 210, 0.13);
+    background: #f5faff;
+}
+
+.form-row select::-ms-expand {
+    display: none;
+}
+
+.form-row select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%231976d2" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 20px 20px;
+}
+
+/* 美化数字输入框 */
+.form-row input[type="number"] {
+    border: var(--border);
+    border-radius: 16px;
+    padding: 12px 18px;
+    font-size: 1.12rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.25s, background 0.2s;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(58, 26, 9, 0.10);
+    color: var(--main-color);
+}
+
+.form-row input[type="number"]:focus,
+.form-row input[type="number"]:hover {
+    border-color: #1976d2;
+    box-shadow: 0 4px 20px rgba(25, 118, 210, 0.13);
+    background: #f5faff;
+}
+
+/* 去除input数字框默认箭头 */
+.form-row input[type="number"]::-webkit-outer-spin-button,
+.form-row input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-row input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+@media (max-width: 600px) {
+
+    .form-row select,
+    .form-row input[type="number"] {
+        font-size: 1.08em;
+        padding: 10px 12px;
+    }
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+th,
+td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+    background: #f5f3f2;
+    color: var(--main-color);
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.qr {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.footer {
+    text-align: center;
+    color: #888;
+    font-size: 0.98em;
+    margin-top: 24px;
+}
+
+@media (max-width: 600px) {
+    #app {
+        padding: 8px 2vw;
+    }
+
+    .card {
+        padding: 14px 6px;
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.1em;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 0.95em;
+    }
+
+    .qr img {
+        width: 90vw !important;
+        height: auto !important;
+        max-width: 350px;
+    }
+} 
