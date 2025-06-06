@@ -1,15 +1,17 @@
 <?php
+
 $AreaType = array(
     '山东' => array('普通类'),
     '河北' => array('物理类', '历史类'),
-
+    '山西' => array('文史', '理工'),
     // 可继续扩展
 );
+
 $AreaScore = array(
     '山东' => array('普通类' => array(21199, 144676)),
     '河北' => array('历史类' => array(5605, 12485), '物理类' => array(36748, 70986)),
+    '山西' => array('文史' => array(5996, 8873), '理工' => array(34494, 45282)),
     // 可继续扩展
-
 );
 $Subject = array(
     '山东' => array(
@@ -108,6 +110,35 @@ $Subject = array(
             '日语（师范）' => array('Num' => 6, 'MaxScore' => 562, 'MinScore' => 548, 'AvgScore' => 552.83, 'MaxRank' => 12485, 'MinRank' => 16776),
         ),
     ),
+    '山西' => array(
+        '理工' => array(
+            '数学与应用数学（师范）' => array('Num' => 7, 'MaxScore' => 569, 'MinScore' => 525, 'AvgScore' => 534.14, 'MaxRank' => 16365, 'MinRank' => 34494),
+            '物理学（师范）' => array('Num' => 4, 'MaxScore' => 531, 'MinScore' => 522, 'AvgScore' => 525.25, 'MaxRank' => 31639, 'MinRank' => 35861),
+            '生物科学（师范）' => array('Num' => 4, 'MaxScore' => 550, 'MinScore' => 521, 'AvgScore' => 532.75, 'MaxRank' => 23366, 'MinRank' => 36352),
+            '地理科学（师范）' => array('Num' => 2, 'MaxScore' => 523, 'MinScore' => 520, 'AvgScore' => 521.50, 'MaxRank' => 35415, 'MinRank' => 36886),
+            '计算机科学与技术（师范）' => array('Num' => 4, 'MaxScore' => 526, 'MinScore' => 519, 'AvgScore' => 521.75, 'MaxRank' => 34012, 'MinRank' => 37401),
+            '电子信息工程' => array('Num' => 4, 'MaxScore' => 521, 'MinScore' => 517, 'AvgScore' => 518.50, 'MaxRank' => 36352, 'MinRank' => 38403),
+            '人工智能' => array('Num' => 4, 'MaxScore' => 520, 'MinScore' => 515, 'AvgScore' => 517.75, 'MaxRank' => 36886, 'MinRank' => 39381),
+            '生态学' => array('Num' => 2, 'MaxScore' => 519, 'MinScore' => 514, 'AvgScore' => 516.50, 'MaxRank' => 37401, 'MinRank' => 39934),
+            '经济学' => array('Num' => 2, 'MaxScore' => 512, 'MinScore' => 511, 'AvgScore' => 511.50, 'MaxRank' => 40977, 'MinRank' => 41507),
+            '教育技术学（师范）' => array('Num' => 2, 'MaxScore' => 504, 'MinScore' => 501, 'AvgScore' => 502.50, 'MaxRank' => 45282, 'MinRank' => 46930),
+            '金融工程' => array('Num' => 4, 'MaxScore' => 514, 'MinScore' => 495, 'AvgScore' => 502.00, 'MaxRank' => 39934, 'MinRank' => 50257),
+        ),
+        '文史' => array(
+            '汉语言文学（师范）' => array('Num' => 3, 'MaxScore' => 540, 'MinScore' => 528, 'AvgScore' => 532.33, 'MaxRank' => 4383, 'MinRank' => 5996),
+            '思想政治教育（师范）' => array('Num' => 4, 'MaxScore' => 538, 'MinScore' => 523, 'AvgScore' => 530.25, 'MaxRank' => 4635, 'MinRank' => 6822),
+            '教育学（师范）' => array('Num' => 3, 'MaxScore' => 525, 'MinScore' => 520, 'AvgScore' => 523.00, 'MaxRank' => 6526, 'MinRank' => 7293),
+            '哲学' => array('Num' => 4, 'MaxScore' => 525, 'MinScore' => 518, 'AvgScore' => 521.25, 'MaxRank' => 6526, 'MinRank' => 7599),
+            '小学教育（师范）' => array('Num' => 3, 'MaxScore' => 525, 'MinScore' => 518, 'AvgScore' => 521.67, 'MaxRank' => 6526, 'MinRank' => 7599),
+            '历史学（师范）' => array('Num' => 5, 'MaxScore' => 537, 'MinScore' => 517, 'AvgScore' => 522.40, 'MaxRank' => 4764, 'MinRank' => 7740),
+            '汉语国际教育（师范）' => array('Num' => 3, 'MaxScore' => 526, 'MinScore' => 517, 'AvgScore' => 522.67, 'MaxRank' => 6339, 'MinRank' => 7740),
+            '政治学与行政学' => array('Num' => 4, 'MaxScore' => 526, 'MinScore' => 516, 'AvgScore' => 520.50, 'MaxRank' => 6339, 'MinRank' => 7906),
+            '英语' => array('Num' => 5, 'MaxScore' => 522, 'MinScore' => 516, 'AvgScore' => 518.20, 'MaxRank' => 6969, 'MinRank' => 7906),
+            '文化产业管理' => array('Num' => 3, 'MaxScore' => 521, 'MinScore' => 513, 'AvgScore' => 515.67, 'MaxRank' => 7140, 'MinRank' => 8382),
+            '戏剧影视文学' => array('Num' => 5, 'MaxScore' => 510, 'MinScore' => 509, 'AvgScore' => 509.60, 'MaxRank' => 8873, 'MinRank' => 9040),
+        ),
+    ),
+
 
 );
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
