@@ -3,10 +3,13 @@ import os
 from datetime import datetime
 
 
-def process_excel():
+def process_excel(file_name):
     # 读取Excel文件，假设文件名为data.xlsx，表格为Sheet1
     try:
-        df = pd.read_excel("山西分数线+一分一段表.xlsx", sheet_name="Sheet1")
+        df = pd.read_excel(
+            os.path.join(os.path.dirname(__file__), "data", file_name),
+            sheet_name="Sheet1",
+        )
     except Exception as e:
         print(f"读取Excel失败: {e}")
         return
@@ -132,4 +135,4 @@ def process_excel():
 
 
 if __name__ == "__main__":
-    process_excel()
+    process_excel("江西.xlsx")
