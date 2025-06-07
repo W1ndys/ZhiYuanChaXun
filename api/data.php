@@ -4,15 +4,17 @@ return [
         '山东' => array('普通类'),
         '河北' => array('物理类', '历史类'),
         '山西' => array('文史', '理工'),
+        '江西' => array('历史类', '物理类'),
         // 可继续扩展
     ),
     'AreaScore' => array(
         '山东' => array('普通类' => array(21199, 144676)),
         '河北' => array('历史类' => array(5605, 12485), '物理类' => array(36748, 70986)),
         '山西' => array('文史' => array(5996, 8873), '理工' => array(34494, 45282)),
+        '江西' => array('历史类' => array(28690, 36826), '物理类' => array(46078, 53939)),
         // 可继续扩展
     ),
-    'Subject' =>  array(
+    'Subject' => array(
         '山东' => array(
             '普通类' => array(
                 '汉语言文学（师范）' => array('Num' => 223, 'MaxScore' => 602, 'MinScore' => 572, 'AvgScore' => 575.38, 'MaxRank' => 21199, 'MinRank' => 47164),
@@ -137,5 +139,40 @@ return [
                 '戏剧影视文学' => array('Num' => 5, 'MaxScore' => 510, 'MinScore' => 509, 'AvgScore' => 509.60, 'MaxRank' => 8873, 'MinRank' => 9040),
             ),
         ),
+        '江西' => array(
+            '历史类' => array(
+                '法学' => array('Num' => 4, 'MaxScore' => 569, 'MinScore' => 565, 'AvgScore' => 566.50, 'MaxRank' => 26345, 'MinRank' => 28690),
+                '思想政治教育（师范）' => array('Num' => 8, 'MaxScore' => 564, 'MinScore' => 561, 'AvgScore' => 562.38, 'MaxRank' => 29367, 'MinRank' => 31277),
+                '汉语言文学（师范）' => array('Num' => 6, 'MaxScore' => 569, 'MinScore' => 560, 'AvgScore' => 562.67, 'MaxRank' => 26345, 'MinRank' => 31969),
+                '英语' => array('Num' => 3, 'MaxScore' => 560, 'MinScore' => 558, 'AvgScore' => 558.67, 'MaxRank' => 31969, 'MinRank' => 33325),
+                '历史学（师范）' => array('Num' => 4, 'MaxScore' => 559, 'MinScore' => 558, 'AvgScore' => 558.50, 'MaxRank' => 32645, 'MinRank' => 33325),
+                '汉语国际教育（师范）' => array('Num' => 2, 'MaxScore' => 558, 'MinScore' => 557, 'AvgScore' => 557.50, 'MaxRank' => 33325, 'MinRank' => 34018),
+                '文化产业管理' => array('Num' => 2, 'MaxScore' => 558, 'MinScore' => 556, 'AvgScore' => 557.00, 'MaxRank' => 33325, 'MinRank' => 34715),
+                '翻译' => array('Num' => 3, 'MaxScore' => 557, 'MinScore' => 555, 'AvgScore' => 556.33, 'MaxRank' => 34018, 'MinRank' => 35412),
+                '法语' => array('Num' => 4, 'MaxScore' => 557, 'MinScore' => 554, 'AvgScore' => 555.75, 'MaxRank' => 34018, 'MinRank' => 36121),
+                '教育学（师范）' => array('Num' => 5, 'MaxScore' => 556, 'MinScore' => 552, 'AvgScore' => 554.20, 'MaxRank' => 34715, 'MinRank' => 37602),
+                '小学教育（师范）' => array('Num' => 6, 'MaxScore' => 558, 'MinScore' => 551, 'AvgScore' => 555.67, 'MaxRank' => 33325, 'MinRank' => 38332),
+                '戏剧影视文学' => array('Num' => 5, 'MaxScore' => 553, 'MinScore' => 551, 'AvgScore' => 551.40, 'MaxRank' => 36826, 'MinRank' => 38332),
+                '英语（师范）' => array('Num' => 6, 'MaxScore' => 556, 'MinScore' => 551, 'AvgScore' => 553.50, 'MaxRank' => 34715, 'MinRank' => 38332),
+            ),
+            '物理类' => array(
+                '电气工程及其自动化' => array('Num' => 5, 'MaxScore' => 546, 'MinScore' => 541, 'AvgScore' => 543.80, 'MaxRank' => 42142, 'MinRank' => 46078),
+                '自动化' => array('Num' => 5, 'MaxScore' => 547, 'MinScore' => 541, 'AvgScore' => 543.20, 'MaxRank' => 41365, 'MinRank' => 46078),
+                '软件工程' => array('Num' => 4, 'MaxScore' => 550, 'MinScore' => 539, 'AvgScore' => 542.25, 'MaxRank' => 39104, 'MinRank' => 47730),
+                '网络空间安全' => array('Num' => 4, 'MaxScore' => 542, 'MinScore' => 536, 'AvgScore' => 538.25, 'MaxRank' => 45216, 'MinRank' => 50290),
+                '化学（师范）' => array('Num' => 6, 'MaxScore' => 552, 'MinScore' => 536, 'AvgScore' => 544.83, 'MaxRank' => 37602, 'MinRank' => 50290),
+                '生物科学（师范）' => array('Num' => 6, 'MaxScore' => 554, 'MinScore' => 535, 'AvgScore' => 539.83, 'MaxRank' => 36121, 'MinRank' => 51203),
+                '计算机科学与技术（师范）' => array('Num' => 6, 'MaxScore' => 540, 'MinScore' => 534, 'AvgScore' => 537.50, 'MaxRank' => 46875, 'MinRank' => 52063),
+                '材料化学' => array('Num' => 2, 'MaxScore' => 535, 'MinScore' => 533, 'AvgScore' => 534.00, 'MaxRank' => 51203, 'MinRank' => 52995),
+                '数据科学' => array('Num' => 4, 'MaxScore' => 538, 'MinScore' => 533, 'AvgScore' => 535.25, 'MaxRank' => 48603, 'MinRank' => 52995),
+                '物理学（师范）' => array('Num' => 5, 'MaxScore' => 540, 'MinScore' => 532, 'AvgScore' => 534.60, 'MaxRank' => 46875, 'MinRank' => 53939),
+                '生物工程' => array('Num' => 2, 'MaxScore' => 533, 'MinScore' => 532, 'AvgScore' => 532.50, 'MaxRank' => 52995, 'MinRank' => 53939),
+                '化学工程与工艺' => array('Num' => 2, 'MaxScore' => 534, 'MinScore' => 532, 'AvgScore' => 533.00, 'MaxRank' => 52063, 'MinRank' => 53939),
+                '生态学' => array('Num' => 2, 'MaxScore' => 532, 'MinScore' => 532, 'AvgScore' => 532.00, 'MaxRank' => 53939, 'MinRank' => 53939),
+                '数学与应用数学（师范）' => array('Num' => 8, 'MaxScore' => 555, 'MinScore' => 532, 'AvgScore' => 543.38, 'MaxRank' => 35412, 'MinRank' => 53939),
+                '新能源材料与器件' => array('Num' => 3, 'MaxScore' => 543, 'MinScore' => 532, 'AvgScore' => 536.33, 'MaxRank' => 44419, 'MinRank' => 53939),
+                '统计学' => array('Num' => 8, 'MaxScore' => 556, 'MinScore' => 531, 'AvgScore' => 540.50, 'MaxRank' => 34715, 'MinRank' => 54879),
+            ),
+        ),
     ),
-]; 
+];
