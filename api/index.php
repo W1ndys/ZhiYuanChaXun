@@ -63,6 +63,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 <body>
     <div id="app">
+        <div v-if="showGroupModal" class="modal-overlay">
+            <div class="modal-card">
+                <h2 style="margin-bottom:12px;">加入新生交流群</h2>
+                <p style="margin-bottom:8px;">欢迎加入【2025曲阜师范大学新生交流群】，获取最新资讯、结识新同学！</p>
+                <a href="https://qm.qq.com/q/T04jorATMQ" target="_blank" rel="noopener noreferrer" class="group-link">
+                    点击加入QQ群：2025曲阜师范大学新生交流群
+                </a>
+                <div style="margin:18px 0 8px 0; text-align:center;">
+                    <img src="/qrcode.png" alt="交流群二维码" style="width:160px; height:160px; border-radius:12px; box-shadow:0 2px 12px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
+                </div>
+                <button class="modal-btn" @click="showGroupModal=false">确定</button>
+            </div>
+        </div>
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
             <p>本网站为22级师哥发电设计，与学校无任何关系，特此声明。此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
@@ -215,6 +228,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         const App = {
             mounted() {
                 this.getProvince();
+                // 弹窗只在首次加载显示
+                if (!localStorage.getItem('groupModalClosed')) {
+                    this.showGroupModal = true;
+                }
             },
             methods: {
                 getProvince() {
@@ -283,7 +300,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 onQuery() {
                     this.getRank();
                     this.getSubject();
-                }
+                },
+                closeGroupModal() {
+                    this.showGroupModal = false;
+                    localStorage.setItem('groupModalClosed', '1');
+                },
             },
             data() {
                 return {
@@ -299,6 +320,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     minRank: 0,
                     high_text: "没有数据",
                     middle_text: "没有数据",
+                    showGroupModal: false,
                 };
             },
         };
