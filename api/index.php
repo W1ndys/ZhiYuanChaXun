@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>曲阜师范大学-志愿帮填</title>
     <link rel="stylesheet" href="/style.css" />
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.zhimg.com/vue@3/dist/vue.global.prod.js"></script>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({ id: "3LXM1Spq74C2Vg9h", ck: "3LXM1Spq74C2Vg9h", autoTrack: true, hashMode: true })</script>
 </head>
