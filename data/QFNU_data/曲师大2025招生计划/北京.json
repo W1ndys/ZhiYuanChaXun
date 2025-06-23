@@ -1,0 +1,471 @@
+{
+  "province": "北京",
+  "data": {
+    "2025_综合改革_艺术类": {
+      "year": "2025",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2025",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "本科提前批艺术类（B段）",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2025",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "13",
+            "zydm": "130502",
+            "zycc": "本科提前批艺术类（B段）",
+            "zyxz": "四年",
+            "zsjhs": 2,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "tjfdm": "2",
+            "xy": "艺术设计学院",
+            "yxdm": "24",
+            "bhzy": "",
+            "zkfx": "",
+            "kskmyqmc": "",
+            "sxkmyqzw": "无首选科目要求",
+            "jdxq": "日照校区",
+            "withZyz": false,
+            "zyzname": "",
+            "zyz": ""
+          },
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2025",
+            "ssmc": "北京",
+            "zydhmc": "环境设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "14",
+            "zydm": "130503",
+            "zycc": "本科提前批艺术类（B段）",
+            "zyxz": "四年",
+            "zsjhs": 2,
+            "xkkm": "不提科目要求",
+            "zyxf": "8800",
+            "tjfdm": "2",
+            "xy": "艺术设计学院",
+            "yxdm": "24",
+            "bhzy": "",
+            "zkfx": "",
+            "kskmyqmc": "",
+            "sxkmyqzw": "无首选科目要求",
+            "jdxq": "日照校区",
+            "withZyz": false,
+            "zyzname": "",
+            "zyz": ""
+          }
+        ]
+      }
+    },
+    "2024_综合改革_艺术类": {
+      "year": "2024",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2024",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2024",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "04",
+            "zydm": "130502",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "zyzsf": "",
+            "tjfdm": "2",
+            "xy": "艺术设计学院",
+            "yxdm": "24",
+            "kmcode": "",
+            "sxkmcode": "",
+            "zxkmcode": "",
+            "bhzy": "",
+            "zkfx": "",
+            "kskmyqmc": "",
+            "sxkmyqzw": "",
+            "xkzybb": "",
+            "jdxq": "",
+            "withZyz": false,
+            "zyzname": "",
+            "zyz": ""
+          }
+        ]
+      }
+    },
+    "2023_综合改革_艺术类": {
+      "year": "2023",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2023",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2023",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类",
+            "zydh": "04",
+            "zydm": "130502",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "不提科目要求",
+            "zyxf": "10560",
+            "zyzsf": "",
+            "tjfdm": "",
+            "xy": "美术学院",
+            "yxdm": "18",
+            "kmcode": "",
+            "sxkmcode": "",
+            "zxkmcode": "",
+            "bhzy": "",
+            "zkfx": "",
+            "kskmyqmc": "",
+            "sxkmyqzw": "无首选科目要求",
+            "xkzybb": "",
+            "jdxq": "日照校区",
+            "withZyz": false,
+            "zyzname": "",
+            "zyz": ""
+          }
+        ]
+      }
+    },
+    "2022_综合改革_艺术类专业": {
+      "year": "2022",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类专业",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2022",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2022",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "04",
+            "zydm": "130502",
+            "zycc": "",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "zyzsf": "",
+            "tjfdm": "07",
+            "xy": "美术学院",
+            "yxdm": "18",
+            "kmcode": "",
+            "sxkmcode": "",
+            "zxkmcode": "",
+            "bhzy": "",
+            "zkfx": "",
+            "kskmyqmc": "",
+            "sxkmyqzw": "",
+            "xkzybb": "",
+            "jdxq": "",
+            "withZyz": false,
+            "zyzname": "",
+            "zyz": ""
+          }
+        ]
+      }
+    },
+    "2021_综合改革_艺术类专业": {
+      "year": "2021",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类专业",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2021",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "本科提前批艺术类(B段)(美术类)",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2021",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "04",
+            "zydm": "130502",
+            "zycc": "本科提前批艺术类(B段)(美术类)",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "zyzsf": "",
+            "tjfdm": "07",
+            "xy": "美术学院",
+            "yxdm": "18",
+            "withZyz": false
+          }
+        ]
+      }
+    },
+    "2020_综合改革_艺术类专业": {
+      "year": "2020",
+      "subject_category": "综合改革",
+      "admission_type": "艺术类专业",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2020",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "本科提前批艺术类(B段)(美术类)",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2020",
+            "ssmc": "北京",
+            "zydhmc": "视觉传达设计",
+            "klmc": "综合改革",
+            "zylx": "艺术类专业",
+            "zydh": "04",
+            "zydm": "130502",
+            "zycc": "本科提前批艺术类(B段)(美术类)",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "待定",
+            "zyzsf": "",
+            "tjfdm": "07",
+            "xy": "美术学院",
+            "yxdm": "18",
+            "withZyz": false
+          }
+        ]
+      }
+    },
+    "2019_艺术(文)_艺术类": {
+      "year": "2019",
+      "subject_category": "艺术(文)",
+      "admission_type": "艺术类",
+      "plan_data": {
+        "withZyz": false,
+        "zsjhTotal": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2019",
+            "ssmc": "北京",
+            "zydhmc": "",
+            "klmc": "艺术(文)",
+            "zylx": "艺术类",
+            "zydh": "",
+            "zydm": "",
+            "zycc": "本科提前批艺术类（B段美术类）",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "8800",
+            "withZyz": false
+          }
+        ],
+        "zsjhList": [
+          {
+            "remarks": "",
+            "schcode": "",
+            "sex": "",
+            "campus": "",
+            "tdzy": "",
+            "nf": "2019",
+            "ssmc": "北京",
+            "zydhmc": "设计学类",
+            "klmc": "艺术(文)",
+            "zylx": "艺术类",
+            "zydh": "14",
+            "zydm": "1305",
+            "zycc": "本科提前批艺术类（B段美术类）",
+            "zyxz": "四年",
+            "zsjhs": 4,
+            "xkkm": "",
+            "zyxf": "8800",
+            "zyzsf": "",
+            "tjfdm": "07",
+            "xy": "美术学院",
+            "yxdm": "18",
+            "withZyz": false
+          }
+        ]
+      }
+    }
+  },
+  "summary": {
+    "total_combinations": 7,
+    "successful_requests": 7,
+    "failed_requests": 0
+  }
+}
