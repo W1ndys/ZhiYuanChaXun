@@ -79,14 +79,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
-            <p>
-                本网站为22级师哥发电设计，与学校无任何关系，特此声明。此页面结果仅供参考，请勿过度依赖此页面结果，理性填报。<br>
-                数据来源于：
-                <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html#/" target="_blank"
-                    rel="noopener noreferrer">曲阜师范大学本科招生网（招生计划和历年分数）</a>、
-                <a href="https://www.gaokao.cn/colleges/bypart" target="_blank"
-                    rel="noopener noreferrer">百度一分一段查询API/阳光高考一分一段数据</a>
-            </p>
+            <div style="background: #f8f9fa; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; font-size: 1.05em; line-height: 1.8;">
+                <div style="color: #d32f2f; font-weight: bold; margin-bottom: 6px;">
+                    本网站为22级师哥个人设计，与学校无任何关系，特此声明。
+                </div>
+                <div style="margin-bottom: 6px;">
+                    此页面结果仅供参考，请勿过度依赖，理性填报。
+                </div>
+                <div style="margin-bottom: 6px;">
+                    主站：<a href="https://act.w1ndys.top/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">https://act.w1ndys.top/</a>
+                    <span style="margin:0 8px;">|</span>
+                    备用站点：<a href="https://act.easy-qfnu.top/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">https://act.easy-qfnu.top/</a>
+                </div>
+                <div>
+                    数据来源：
+                    <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html#/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">
+                        曲阜师范大学本科招生网（招生计划和历年分数）
+                    </a>
+                    <span style="margin:0 4px;">、</span>
+                    <a href="https://www.gaokao.cn/colleges/bypart" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">
+                        百度一分一段查询API/阳光高考一分一段数据
+                    </a>
+                </div>
+            </div>
             <p>
                 <span
                     style="color: #d32f2f; font-weight: bold; font-size: 1.15em; background: #fffbe6; padding: 4px 8px; border-radius: 6px; display: inline-block;">
@@ -259,7 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         this.loadingMajor = false;
                         return;
                     }
-                    
+
                     this.loadingMajor = true;
                     fetch(`?type=major&province=${this.form.province}`)
                         .then(res => res.json())
