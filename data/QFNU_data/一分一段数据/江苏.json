@@ -32162,7 +32162,7 @@
   {
     "province": "江苏",
     "year": "2020",
-    "category": "理科",
+    "category": "理工",
     "segments": [
       {
         "max": 199,
@@ -34656,7 +34656,7 @@
   {
     "province": "江苏",
     "year": "2020",
-    "category": "文科",
+    "category": "文史",
     "segments": [
       {
         "max": 199,
@@ -37675,7 +37675,7 @@
   {
     "province": "江苏",
     "year": "2019",
-    "category": "理科",
+    "category": "理工",
     "segments": [
       {
         "max": 199,
@@ -39745,7 +39745,7 @@
   {
     "province": "江苏",
     "year": "2019",
-    "category": "文科",
+    "category": "文史",
     "segments": [
       {
         "max": 199,
@@ -42098,7 +42098,7 @@
   {
     "province": "江苏",
     "year": "2018",
-    "category": "理科",
+    "category": "理工",
     "segments": [
       {
         "max": 199,
@@ -43468,7 +43468,7 @@
   {
     "province": "江苏",
     "year": "2018",
-    "category": "文科",
+    "category": "文史",
     "segments": [
       {
         "max": 199,
