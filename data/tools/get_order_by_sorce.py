@@ -102,24 +102,13 @@ class ScoreRankMatcher:
         # 获取科类信息，需要处理科类名称的映射
         category = record.get("科类", "")
 
-        # 科类名称映射（根据实际情况可能需要调整）
-        category_mapping = {
-            "理工": "理工",
-            "文史": "文科",
-            "艺术(不分文理)": "艺术类",
-        }
-
-        mapped_category = category_mapping.get(category, category)
-
         # 为各个分数字段添加位次
         score_fields = ["最低分", "平均分", "最高分"]
         for field in score_fields:
             if field in record and record[field] is not None:
                 try:
                     score = int(record[field])
-                    rank = self.find_rank_by_score(
-                        province, year, mapped_category, score
-                    )
+                    rank = self.find_rank_by_score(province, year, category, score)
                     if rank:
                         record[f"{field}位次"] = rank
                 except (ValueError, TypeError):
