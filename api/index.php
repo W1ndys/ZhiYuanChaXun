@@ -79,7 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
-            <div style="background: #f8f9fa; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; font-size: 1.05em; line-height: 1.8;">
+            <div
+                style="background: #f8f9fa; border-radius: 8px; padding: 14px 18px; margin-bottom: 12px; font-size: 1.05em; line-height: 1.8;">
                 <div style="color: #d32f2f; font-weight: bold; margin-bottom: 6px;">
                     本网站为22级师哥个人设计，与学校无任何关系，特此声明。
                 </div>
@@ -87,17 +88,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     此页面结果仅供参考，请勿过度依赖，理性填报。
                 </div>
                 <div style="margin-bottom: 6px;">
-                    主站：<a href="https://act.w1ndys.top/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">https://act.w1ndys.top/</a>
+                    主站：<a href="https://act.w1ndys.top/" target="_blank" rel="noopener noreferrer"
+                        style="color:#1976d2;text-decoration:underline;">https://act.w1ndys.top/</a>
                     <span style="margin:0 8px;">|</span>
-                    备用站点：<a href="https://act.easy-qfnu.top/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">https://act.easy-qfnu.top/</a>
+                    备用站点：<a href="https://act.easy-qfnu.top/" target="_blank" rel="noopener noreferrer"
+                        style="color:#1976d2;text-decoration:underline;">https://act.easy-qfnu.top/</a>
                 </div>
                 <div>
                     数据来源：
-                    <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html#/" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">
+                    <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html#/" target="_blank"
+                        rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">
                         曲阜师范大学本科招生网（招生计划和历年分数）
                     </a>
                     <span style="margin:0 4px;">、</span>
-                    <a href="https://www.gaokao.cn/colleges/bypart" target="_blank" rel="noopener noreferrer" style="color:#1976d2;text-decoration:underline;">
+                    <a href="https://www.gaokao.cn/colleges/bypart" target="_blank" rel="noopener noreferrer"
+                        style="color:#1976d2;text-decoration:underline;">
                         百度一分一段查询API/阳光高考一分一段数据
                     </a>
                 </div>
@@ -231,18 +236,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <img src="/qrcode.png" alt="交流群二维码"
                 style="width: min(400px, 40vw); height: auto; aspect-ratio: 1/1; max-width: 100%; border-radius:16px; box-shadow:0 2px 16px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
         </div>
-        <div class="footer">
-            <p>Fork and Refactor by W1ndys | Easy-QFNU | 微信公众号【W1ndys】</p>
-            <p style="color:#888;">如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b>
-                或QQ号<b><a href="https://qm.qq.com/q/nc6EADciVq" target="_blank"
-                        style="color:inherit;text-decoration:underline;">2769731875</a></b>或邮箱<b><a
-                        href="mailto:w1ndys@qfnu.edu.cn"
-                        style="color:inherit;text-decoration:underline;">w1ndys@qfnu.edu.cn</a></b>咨询！
-            </p>
-            <p>Powered by <a href="https://dlusec.cn/">大理大学网络安全协会</a>&amp;MCSOG&amp;<a
-                    href="https://mcsog.top/">f00001111</a></p>
-            <p>已加入School Robot V2计划</p>
+        <div class="footer"
+            style="padding:32px 0 16px 0; background:#fafbfc; color:#444; font-size:15px; text-align:center; line-height:2;">
 
+            <div style="margin-bottom:10px;">
+                <span style="font-weight:bold;">W1ndys</span>、<span
+                    style="font-weight:bold;">Easy-QFNU</span>、微信公众号【W1ndys】提供数据整理，网站搭建，网站运行维护，网站UI设计，服务器维护，服务器域名支出
+            </div>
+            <div style="margin-bottom:10px;">
+                <span style="font-weight:bold;">Vercel</span> 提供部署服务
+            </div>
+            <div style="margin-bottom:10px;">
+                <span style="font-weight:bold;">曲阜师范大学本科招生网</span>、<span style="font-weight:bold;">阳光高考</span> 提供数据
+            </div>
+            <div style="margin-bottom:10px; color:#888;">
+                如对网站有任何疑问或建议，欢迎联系微信公众号 <b>W1ndys</b>
+                或QQ号 <b><a href="https://qm.qq.com/q/nc6EADciVq" target="_blank"
+                        style="color:inherit;text-decoration:underline;">2769731875</a></b>
+                或邮箱 <b><a href="mailto:w1ndys@qfnu.edu.cn"
+                        style="color:inherit;text-decoration:underline;">w1ndys@qfnu.edu.cn</a></b> 咨询！
+            </div>
+            <div style="margin-bottom:10px;">
+                <span style="font-weight:bold;">大理大学网络空间安全协会</span> &amp; <span
+                    style="font-weight:bold;">f00001111</span> 提供网站框架
+            </div>
+            <div style="margin-bottom:10px;">
+                已加入 School Robot V2 计划
+            </div>
         </div>
     </div>
     <script>
