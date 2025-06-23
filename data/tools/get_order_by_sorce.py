@@ -151,24 +151,44 @@ class ScoreRankMatcher:
             year = data.get("年份", "2024")
             data_list = data.get("数据", [])
 
+            processed_count = 0
             # 处理每个数据块
             for data_block in data_list:
+                # 检查查询条件中的招生类型
+                query_condition = data_block.get("查询条件", {})
+                enrollment_type = query_condition.get("招生类型", "")
+
+                # 只处理普通类的数据
+                if enrollment_type != "普通类":
+                    continue
+
+                processed_count += 1
+                print(f"  正在处理普通类数据块...")
+
                 # 处理省份录取信息
                 province_info = data_block.get("省份录取信息", [])
                 for record in province_info:
-                    self.add_rank_to_record(record, province, year)
+                    if record.get("招生类型") == "普通类":
+                        self.add_rank_to_record(record, province, year)
 
                 # 处理专业录取信息
                 major_info = data_block.get("专业录取信息", [])
                 for record in major_info:
-                    self.add_rank_to_record(record, province, year)
+                    if record.get("招生类型") == "普通类":
+                        self.add_rank_to_record(record, province, year)
 
             # 保存更新后的数据
             with open(input_file, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
 
-            print(f"成功处理 {province} 的数据")
-            return True
+            if processed_count > 0:
+                print(
+                    f"成功处理 {province} 的数据 (处理了 {processed_count} 个普通类数据块)"
+                )
+                return True
+            else:
+                print(f"警告: {province} 没有找到普通类数据")
+                return False
 
         except Exception as e:
             print(f"错误: 处理 {province} 数据时发生错误: {e}")
