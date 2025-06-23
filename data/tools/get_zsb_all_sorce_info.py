@@ -1,7 +1,7 @@
 import json
 import os
 import time
-from get_zsb_sorce_info import QfnuAdmissionsClient
+from data.tools.get_lnfs import QfnuAdmissionsClient
 
 
 class BatchDataCollector:
