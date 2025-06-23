@@ -44,7 +44,12 @@ class ScoreRankMatcher:
             return None
 
     def find_rank_by_score(
-        self, province: str, year: str, category: str, score: int
+        self,
+        province: str,
+        year: str,
+        category: str,
+        score: int,
+        rank_strategy: str = "exact",
     ) -> Optional[str]:
         """
         根据分数查找对应的位次
@@ -54,6 +59,7 @@ class ScoreRankMatcher:
             year: 年份
             category: 科类
             score: 分数
+            rank_strategy: 位次策略 "exact"(精确), "upper"(取区间最高位次), "lower"(取区间最低位次)
 
         Returns:
             位次字符串，如果找不到返回None
@@ -81,9 +87,22 @@ class ScoreRankMatcher:
 
             if min_score <= score <= max_score:
                 info_list = segment.get("info", [])
-                for info in info_list:
-                    if int(info.get("maxScore", "0")) == score:
-                        return info.get("maxOrder", "")
+
+                if rank_strategy == "exact":
+                    # 精确匹配分数
+                    for info in info_list:
+                        if int(info.get("maxScore", "0")) == score:
+                            return info.get("maxOrder", "")
+                elif rank_strategy == "upper":
+                    # 取该分数区间的最高位次（数字最小）
+                    for info in info_list:
+                        if int(info.get("maxScore", "0")) == score:
+                            return info.get("minOrder", "")  # minOrder是最高位次
+                elif rank_strategy == "lower":
+                    # 取该分数区间的最低位次（数字最大）
+                    for info in info_list:
+                        if int(info.get("maxScore", "0")) == score:
+                            return info.get("maxOrder", "")  # maxOrder是最低位次
 
         return None
 
@@ -102,13 +121,20 @@ class ScoreRankMatcher:
         # 获取科类信息，需要处理科类名称的映射
         category = record.get("科类", "")
 
-        # 为各个分数字段添加位次
-        score_fields = ["最低分", "平均分", "最高分"]
-        for field in score_fields:
+        # 为各个分数字段添加位次，使用不同的策略
+        score_rank_mapping = {
+            "最低分": "lower",  # 最低分用最低位次策略
+            "平均分": "exact",  # 平均分用精确匹配策略
+            "最高分": "upper",  # 最高分用最高位次策略
+        }
+
+        for field, strategy in score_rank_mapping.items():
             if field in record and record[field] is not None:
                 try:
                     score = int(record[field])
-                    rank = self.find_rank_by_score(province, year, category, score)
+                    rank = self.find_rank_by_score(
+                        province, year, category, score, strategy
+                    )
                     if rank:
                         record[f"{field}位次"] = rank
                 except (ValueError, TypeError):
