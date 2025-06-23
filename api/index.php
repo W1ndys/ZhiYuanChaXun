@@ -56,12 +56,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>曲阜师范大学-志愿帮填</title>
     <link rel="stylesheet" href="/style.css" />
-    <script src="https://unpkg.zhimg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="/js/vue.global.prod.js"></script>
+    <script>
+        if (typeof Vue === 'undefined') {
+            console.warn('本地 Vue.js 加载失败，尝试 CDN...');
+            document.write('<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"><\/script>');
+            setTimeout(function () {
+                if (typeof Vue === 'undefined') {
+                    console.warn('第一个 CDN 失败，尝试备用 CDN...');
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js';
+                    script.onerror = function () {
+                        document.body.innerHTML = '<div style="text-align:center;padding:50px;color:#d32f2f;">页面加载失败，请检查网络连接或联系管理员</div>';
+                    };
+                    document.head.appendChild(script);
+                }
+            }, 1000);
+        }
+    </script>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({ id: "3LXM1Spq74C2Vg9h", ck: "3LXM1Spq74C2Vg9h", autoTrack: true, hashMode: true })</script>
 </head>
 
 <body>
+    <div id="loading"
+        style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;">
+        <div style="text-align:center;">
+            <div style="margin-bottom:16px;">页面加载中...</div>
+            <div
+                style="width:40px;height:40px;border:4px solid #f3f3f3;border-top:4px solid #1976d2;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto;">
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
     <div id="app">
         <div v-if="showGroupModal" class="modal-overlay">
             <div class="modal-card">
@@ -240,8 +278,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             style="padding:32px 0 16px 0; background:#fafbfc; color:#444; font-size:15px; text-align:center; line-height:2;">
 
             <div style="margin-bottom:10px;">
-                <span style="font-weight:bold;">W1ndys</span>、<span
-                    style="font-weight:bold;"><a href="https://easy-qfnu.top/" target="_blank" style="color:inherit;text-decoration:underline;">Easy-QFNU</a></span>、微信公众号【W1ndys】提供数据整理，网站搭建，网站运行维护，网站UI设计，服务器维护，服务器域名支出
+                <span style="font-weight:bold;">W1ndys</span>、<span style="font-weight:bold;"><a
+                        href="https://easy-qfnu.top/" target="_blank"
+                        style="color:inherit;text-decoration:underline;">Easy-QFNU</a></span>、微信公众号【W1ndys】提供数据整理，网站搭建，网站运行维护，网站UI设计，服务器维护，服务器域名支出
             </div>
             <div style="margin-bottom:10px;">
                 <span style="font-weight:bold;">Vercel</span> 提供部署服务
@@ -266,116 +305,136 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         </div>
     </div>
     <script>
-        const App = {
-            mounted() {
-                this.getProvince();
-                // 弹窗只在首次加载显示
-                if (!localStorage.getItem('groupModalClosed')) {
-                    this.showGroupModal = true;
-                }
-            },
-            methods: {
-                getProvince() {
-                    fetch('?type=area')
-                        .then(res => res.json())
-                        .then(data => {
-                            this.provinceList = data;
-                            this.form.province = '';
+        if (typeof Vue === 'undefined') {
+            document.body.innerHTML = '<div style="text-align:center;padding:50px;color:#d32f2f;">页面加载失败，请刷新重试或使用其他浏览器访问</div>';
+        } else {
+            const App = {
+                mounted() {
+                    this.getProvince();
+                    // 弹窗只在首次加载显示
+                    if (!localStorage.getItem('groupModalClosed')) {
+                        this.showGroupModal = true;
+                    }
+                },
+                methods: {
+                    getProvince() {
+                        fetch('?type=area')
+                            .then(res => res.json())
+                            .then(data => {
+                                this.provinceList = data;
+                                this.form.province = '';
+                                this.majorList = [];
+                                this.form.major = '';
+                            });
+                        this.high_text = "你的排名超过了大多数专业哦~";
+                        this.middle_text = "你的排名可能不太合适";
+                    },
+                    getMajor() {
+                        if (!this.form.province) {
                             this.majorList = [];
                             this.form.major = '';
-                        });
-                    this.high_text = "你的排名超过了大多数专业哦~";
-                    this.middle_text = "你的排名可能不太合适";
-                },
-                getMajor() {
-                    if (!this.form.province) {
-                        this.majorList = [];
-                        this.form.major = '';
-                        this.loadingMajor = false;
-                        return;
-                    }
+                            this.loadingMajor = false;
+                            return;
+                        }
 
-                    this.loadingMajor = true;
-                    fetch(`?type=major&province=${this.form.province}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            this.majorList = data;
-                            this.form.major = '';
-                            this.loadingMajor = false;
-                        })
-                        .catch(error => {
-                            console.error('获取科类数据失败:', error);
-                            this.loadingMajor = false;
-                        });
-                    this.high_text = "你的排名超过了大多数专业哦~";
-                    this.middle_text = "你的排名可能不太合适";
-                },
-                getRank() {
-                    if (!this.form.province || !this.form.major) {
-                        this.maxRank = 0;
-                        this.minRank = 0;
-                        return;
-                    }
-                    fetch(`?type=rank&province=${this.form.province}&major=${this.form.major}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            if (Array.isArray(data)) {
-                                this.maxRank = data[0];
-                                this.minRank = data[1];
-                            } else {
-                                this.maxRank = 0;
-                                this.minRank = 0;
-                            }
-                        });
-                    this.high_text = "你的排名超过了大多数专业哦~";
-                    this.middle_text = "你的排名可能不太合适";
-                },
-                getSubject() {
-                    if (this.form.rank == 0 || this.form.major == "" || this.form.province == "") {
-                        this.high_text = "没有数据";
-                        this.middle_text = "没有数据";
-                        return;
-                    }
-                    this.high_text = "你的排名超过了大多数专业哦~";
-                    this.middle_text = "你的排名可能不太合适";
-                    fetch(
-                        `?type=rank&province=${this.form.province}&major=${this.form.major}&rank=${this.form.rank}`
-                    )
-                        .then((response) => response.json())
-                        .then((data) => {
-                            this.subjectList = data;
-                        });
-                },
-                onQuery() {
-                    this.getRank();
-                    this.getSubject();
-                },
-                closeGroupModal() {
-                    this.showGroupModal = false;
-                    localStorage.setItem('groupModalClosed', '1');
-                },
-            },
-            data() {
-                return {
-                    provinceList: [],
-                    majorList: [],
-                    subjectList: {},
-                    form: {
-                        province: "",
-                        major: "",
-                        rank: 0,
+                        this.loadingMajor = true;
+                        fetch(`?type=major&province=${this.form.province}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                this.majorList = data;
+                                this.form.major = '';
+                                this.loadingMajor = false;
+                            })
+                            .catch(error => {
+                                console.error('获取科类数据失败:', error);
+                                this.loadingMajor = false;
+                            });
+                        this.high_text = "你的排名超过了大多数专业哦~";
+                        this.middle_text = "你的排名可能不太合适";
                     },
-                    maxRank: 0,
-                    minRank: 0,
-                    high_text: "没有数据",
-                    middle_text: "没有数据",
-                    showGroupModal: false,
-                    loadingMajor: false,
-                };
-            },
-        };
-        const app = Vue.createApp(App);
-        app.mount("#app");
+                    getRank() {
+                        if (!this.form.province || !this.form.major) {
+                            this.maxRank = 0;
+                            this.minRank = 0;
+                            return;
+                        }
+                        fetch(`?type=rank&province=${this.form.province}&major=${this.form.major}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                if (Array.isArray(data)) {
+                                    this.maxRank = data[0];
+                                    this.minRank = data[1];
+                                } else {
+                                    this.maxRank = 0;
+                                    this.minRank = 0;
+                                }
+                            });
+                        this.high_text = "你的排名超过了大多数专业哦~";
+                        this.middle_text = "你的排名可能不太合适";
+                    },
+                    getSubject() {
+                        if (this.form.rank == 0 || this.form.major == "" || this.form.province == "") {
+                            this.high_text = "没有数据";
+                            this.middle_text = "没有数据";
+                            return;
+                        }
+                        this.high_text = "你的排名超过了大多数专业哦~";
+                        this.middle_text = "你的排名可能不太合适";
+                        fetch(
+                            `?type=rank&province=${this.form.province}&major=${this.form.major}&rank=${this.form.rank}`
+                        )
+                            .then((response) => response.json())
+                            .then((data) => {
+                                this.subjectList = data;
+                            });
+                    },
+                    onQuery() {
+                        this.getRank();
+                        this.getSubject();
+                    },
+                    closeGroupModal() {
+                        this.showGroupModal = false;
+                        localStorage.setItem('groupModalClosed', '1');
+                    },
+                },
+                data() {
+                    return {
+                        provinceList: [],
+                        majorList: [],
+                        subjectList: {},
+                        form: {
+                            province: "",
+                            major: "",
+                            rank: 0,
+                        },
+                        maxRank: 0,
+                        minRank: 0,
+                        high_text: "没有数据",
+                        middle_text: "没有数据",
+                        showGroupModal: false,
+                        loadingMajor: false,
+                    };
+                },
+            };
+
+            try {
+                const app = Vue.createApp(App);
+                app.mount("#app");
+            } catch (error) {
+                console.error('Vue 应用初始化失败:', error);
+                document.getElementById('app').innerHTML = '<div style="text-align:center;padding:50px;color:#d32f2f;">应用初始化失败，请刷新页面重试</div>';
+            }
+        }
+
+        // 隐藏加载指示器
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+            }, 500);
+        });
     </script>
 </body>
 
