@@ -71,15 +71,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     点击加入QQ群：2025曲阜师范大学新生交流群
                 </a>
                 <div style="margin:18px 0 8px 0; text-align:center;">
-                    <img src="/qrcode.png" alt="交流群二维码" style="width:160px; height:160px; border-radius:12px; box-shadow:0 2px 12px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
+                    <img src="/qrcode.png" alt="交流群二维码"
+                        style="width:160px; height:160px; border-radius:12px; box-shadow:0 2px 12px rgba(58,26,9,0.10); border:1px solid #eee; object-fit: cover;" />
                 </div>
                 <button class="modal-btn" @click="showGroupModal=false">确定</button>
             </div>
         </div>
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
-            <p>本网站为22级师哥发电设计，与学校无任何关系，特此声明。此页面结果仅供参考，请勿过度依赖此页面结果，理性填报，数据来源于：<a
-                    href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html">曲阜师范大学本科招生网</a></p>
+            <p>
+                本网站为22级师哥发电设计，与学校无任何关系，特此声明。此页面结果仅供参考，请勿过度依赖此页面结果，理性填报。<br>
+                数据来源于：
+                <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html#/" target="_blank"
+                    rel="noopener noreferrer">曲阜师范大学本科招生网（招生计划和历年分数）</a>、
+                <a href="https://www.gaokao.cn/colleges/bypart" target="_blank"
+                    rel="noopener noreferrer">百度一分一段查询API/阳光高考一分一段数据</a>
+            </p>
             <p>
                 <span
                     style="color: #d32f2f; font-weight: bold; font-size: 1.15em; background: #fffbe6; padding: 4px 8px; border-radius: 6px; display: inline-block;">
