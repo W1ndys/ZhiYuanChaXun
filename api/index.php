@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
             <div style="margin-bottom:10px;">
                 <span style="font-weight:bold;">W1ndys</span>、<span
-                    style="font-weight:bold;">Easy-QFNU</span>、微信公众号【W1ndys】提供数据整理，网站搭建，网站运行维护，网站UI设计，服务器维护，服务器域名支出
+                    style="font-weight:bold;"><a href="https://easy-qfnu.top/" target="_blank" style="color:inherit;text-decoration:underline;">Easy-QFNU</a></span>、微信公众号【W1ndys】提供数据整理，网站搭建，网站运行维护，网站UI设计，服务器维护，服务器域名支出
             </div>
             <div style="margin-bottom:10px;">
                 <span style="font-weight:bold;">Vercel</span> 提供部署服务
