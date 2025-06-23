@@ -83,7 +83,7 @@ class ScoreRankMatcher:
                 info_list = segment.get("info", [])
                 for info in info_list:
                     if int(info.get("maxScore", "0")) == score:
-                        return info.get("minOrder", "")
+                        return info.get("maxOrder", "")
 
         return None
 
