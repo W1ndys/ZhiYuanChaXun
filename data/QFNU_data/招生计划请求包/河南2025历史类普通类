@@ -1,0 +1,42 @@
+POST /f/ajax_zsjh?ts=1750642694174 HTTP/1.1
+Host: zsb.qfnu.edu.cn
+Connection: keep-alive
+Content-Length: 99
+sec-ch-ua-platform: "Windows"
+sec-ch-ua: "Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
+Csrf-Token: vPUrlrTPyr
+sec-ch-ua-mobile: ?0
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept: */*
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-Time: 1750642694175
+Origin: https://zsb.qfnu.edu.cn
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/zsjh.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: zhaosheng.qfnu.session.id=3d7badc4718941059a2d7064a5911856
+
+ssmc=%E6%B2%B3%E5%8D%97&zsnf=2025&klmc=%E5%8E%86%E5%8F%B2%E7%B1%BB&zslx=%E6%99%AE%E9%80%9A%E7%B1%BB
+
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=0
+Referrer-Policy: same-origin
+X-Permitted-Cross-Domain-Policies: none
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Robots-Tag: none
+Content-Security-Policy: default-src 'self' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; script-src 'self' 'unsafe-inline' 'unsafe-eval' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; style-src 'self' 'unsafe-inline' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; font-src 'self' data: answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; img-src 'self' data: blob: answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn;
+Csrf-Token: vlTlP8
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 23 Jun 2025 01:38:12 GMT
+Keep-Alive: timeout=2
+Connection: keep-alive
+
+{"state":1,"msg":"操作成功","data":{"withZyz":false,"zsjhTotal":[{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"","klmc":"历史类","zylx":"普通类","zydh":"","zydm":"","zycc":"普通本科批","zyxz":"四年","zsjhs":22,"xkkm":"不提科目要求","zyxf":"5060","withZyz":false}],"zsjhList":[{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"法学","klmc":"历史类","zylx":"普通类","zydh":"2V","zydm":"030101","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5060","tjfdm":"1","xy":"法学院","yxdm":"06","bhzy":"","zkfx":"","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"日照校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"英语","klmc":"历史类","zylx":"普通类","zydh":"2Y","zydm":"050201","zycc":"普通本科批","zyxz":"四年","zsjhs":4,"xkkm":"不提科目要求","zyxf":"5280","tjfdm":"1","xy":"翻译学院","yxdm":"07","bhzy":"","zkfx":"","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"日照校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"小学教育（师范）","klmc":"历史类","zylx":"普通类","zydh":"4S","zydm":"040107","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5060","tjfdm":"1","xy":"教育学院","yxdm":"02","bhzy":"","zkfx":"师范","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"教育学（师范）","klmc":"历史类","zylx":"普通类","zydh":"4T","zydm":"040101","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5280","tjfdm":"1","xy":"教育学院","yxdm":"02","bhzy":"","zkfx":"师范","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"历史学（师范）","klmc":"历史类","zylx":"普通类","zydh":"6S","zydm":"060101","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5280","tjfdm":"1","xy":"历史文化学院","yxdm":"03","bhzy":"","zkfx":"师范","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"文物与博物馆学","klmc":"历史类","zylx":"普通类","zydh":"6U","zydm":"060104","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5060","tjfdm":"1","xy":"历史文化学院","yxdm":"03","bhzy":"","zkfx":"","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"政治学与行政学","klmc":"历史类","zylx":"普通类","zydh":"7B","zydm":"030201","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"思想政治(1门科目考生必须选考方可报考)","zyxf":"5280","tjfdm":"1","xy":"政治与公共管理学院","yxdm":"25","bhzy":"","zkfx":"","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"日照校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"思想政治教育（师范）","klmc":"历史类","zylx":"普通类","zydh":"8S","zydm":"030503","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"思想政治(1门科目考生必须选考方可报考)","zyxf":"5280","tjfdm":"1","xy":"马克思主义学院","yxdm":"01","bhzy":"","zkfx":"师范","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"俄语","klmc":"历史类","zylx":"普通类","zydh":"H4","zydm":"050202","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5060","tjfdm":"1","xy":"外国语学院","yxdm":"18","bhzy":"","zkfx":"","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2025","ssmc":"河南","zydhmc":"汉语言文学（师范）","klmc":"历史类","zylx":"普通类","zydh":"K5","zydm":"050101","zycc":"普通本科批","zyxz":"四年","zsjhs":2,"xkkm":"不提科目要求","zyxf":"5280","tjfdm":"1","xy":"文学院","yxdm":"21","bhzy":"","zkfx":"师范","kskmyqmc":"","sxkmyqzw":"无首选科目要求","jdxq":"曲阜校区","withZyz":false,"zyzname":"","zyz":""}]},"jessionid":"3d7badc4718941059a2d7064a5911856"}

@@ -1,0 +1,42 @@
+POST /f/ajax_lnfs?ts=1750642997851 HTTP/1.1
+Host: zsb.qfnu.edu.cn
+Connection: keep-alive
+Content-Length: 99
+sec-ch-ua-platform: "Windows"
+sec-ch-ua: "Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"
+Csrf-Token: Ulr8Irlyl
+sec-ch-ua-mobile: ?0
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept: */*
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-Time: 1750642997851
+Origin: https://zsb.qfnu.edu.cn
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_web/lnfs.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: zhaosheng.qfnu.session.id=3d7badc4718941059a2d7064a5911856
+
+ssmc=%E6%B9%96%E5%8C%97&zsnf=2024&klmc=%E5%8E%86%E5%8F%B2%E7%B1%BB&zslx=%E6%99%AE%E9%80%9A%E7%B1%BB
+
+HTTP/1.1 200
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=0
+Referrer-Policy: same-origin
+X-Permitted-Cross-Domain-Policies: none
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Robots-Tag: none
+Content-Security-Policy: default-src 'self' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; script-src 'self' 'unsafe-inline' 'unsafe-eval' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; style-src 'self' 'unsafe-inline' answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; font-src 'self' data: answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn; img-src 'self' data: blob: answer.eol.cn front-answer.gaokao.cn static-answer.eol.cn;
+Csrf-Token: ryPzIf8lU
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 23 Jun 2025 01:43:15 GMT
+Keep-Alive: timeout=2
+Connection: keep-alive
+
+{"state":1,"msg":"操作成功","data":{"withYsl":false,"withZyz":false,"zsSsgradeList":[{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","nf":"2024","klmc":"历史类","ssmc":"湖北","zylx":"普通类","kl":"D","ssdm":"42","rs":21,"zdx":432.0,"ptx":432.0,"minScore":544.0,"avgScore":553.29,"maxScore":562.0,"zycc":"普通类","zslx":"普通类","avgScoreIntValue":553,"fsx":432.0}],"sszygradeList":[{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","ssmc":"湖北","nf":"2024","klmc":"历史类","zyzname":"","zylx":"普通类","zymc":"汉语言文学（师范）","maxScore":562.0,"minScore":554.0,"avgScore":559.0,"kl":"","ssdm":"42","rs":4,"zdx":432.0,"ptx":432.0,"zycc":"","zyxz":"","zslx":"普通类","avgScoreIntValue":559,"fsx":432.0},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","ssmc":"湖北","nf":"2024","klmc":"历史类","zyzname":"","zylx":"普通类","zymc":"历史学（师范）","maxScore":559.0,"minScore":554.0,"avgScore":555.75,"kl":"","ssdm":"42","rs":4,"zdx":432.0,"ptx":432.0,"zycc":"","zyxz":"","zslx":"普通类","avgScoreIntValue":555,"fsx":432.0},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","ssmc":"湖北","nf":"2024","klmc":"历史类","zyzname":"","zylx":"普通类","zymc":"英语（师范）","maxScore":554.0,"minScore":552.0,"avgScore":553.0,"kl":"","ssdm":"42","rs":4,"zdx":432.0,"ptx":432.0,"zycc":"","zyxz":"","zslx":"普通类","avgScoreIntValue":553,"fsx":432.0},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","ssmc":"湖北","nf":"2024","klmc":"历史类","zyzname":"","zylx":"普通类","zymc":"文化产业管理","maxScore":554.0,"minScore":551.0,"avgScore":553.0,"kl":"","ssdm":"42","rs":4,"zdx":432.0,"ptx":432.0,"zycc":"","zyxz":"","zslx":"普通类","avgScoreIntValue":553,"fsx":432.0},{"remarks":"","schcode":"","sex":"","campus":"","tdzy":"","ssmc":"湖北","nf":"2024","klmc":"历史类","zyzname":"","zylx":"普通类","zymc":"政治学与行政学","maxScore":550.0,"minScore":544.0,"avgScore":547.2,"kl":"","ssdm":"42","rs":5,"zdx":432.0,"ptx":432.0,"zycc":"","zyxz":"","zslx":"普通类","avgScoreIntValue":547,"fsx":432.0}]},"jessionid":"3d7badc4718941059a2d7064a5911856"}
