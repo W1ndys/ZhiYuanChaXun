@@ -109,8 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <option v-for="province in provinceList" :key="province" :value="province">{{province}}</option>
                 </select>
                 <label for="major">科类</label>
-                <select id="major" v-model="form.major">
-                    <option value="">请选择科类</option>
+                <select id="major" v-model="form.major" :disabled="loadingMajor">
+                    <option value="">{{loadingMajor ? '加载中...' : '请选择科类'}}</option>
                     <option v-for="major in majorList" :key="major" :value="major">{{major}}</option>
                 </select>
                 <label for="rank">位次</label>
@@ -256,13 +256,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     if (!this.form.province) {
                         this.majorList = [];
                         this.form.major = '';
+                        this.loadingMajor = false;
                         return;
                     }
+                    
+                    this.loadingMajor = true;
                     fetch(`?type=major&province=${this.form.province}`)
                         .then(res => res.json())
                         .then(data => {
                             this.majorList = data;
                             this.form.major = '';
+                            this.loadingMajor = false;
+                        })
+                        .catch(error => {
+                            console.error('获取科类数据失败:', error);
+                            this.loadingMajor = false;
                         });
                     this.high_text = "你的排名超过了大多数专业哦~";
                     this.middle_text = "你的排名可能不太合适";
@@ -327,6 +335,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     high_text: "没有数据",
                     middle_text: "没有数据",
                     showGroupModal: false,
+                    loadingMajor: false,
                 };
             },
         };
