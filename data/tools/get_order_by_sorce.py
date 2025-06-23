@@ -211,10 +211,8 @@ def main():
     """
     # 定义目录路径
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    yifenyiduan_dir = os.path.join(base_dir, "QFNU_data", "一分一段数据")
-    qfnu_data_dir = os.path.join(
-        base_dir, "QFNU_data", "曲师大招生办2024年分省专业录取数据"
-    )
+    yifenyiduan_dir = os.path.join(base_dir, "QFNU_data", "百度一分一段数据")
+    qfnu_data_dir = os.path.join(base_dir, "QFNU_data", "曲师大2024年分省专业录取数据")
 
     print("=== 曲师大录取数据位次匹配工具 ===")
     print(f"一分一段数据目录: {yifenyiduan_dir}")
