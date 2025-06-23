@@ -99,7 +99,7 @@ class QfnuAdmissionsClient:
             if response_json.get("state") == 1:
                 token_data = response_json.get("data", "")
                 self._original_token_data = token_data
-                print(f"原始Token数据: {token_data}")
+                print(f"获取到新的CSRF Token: {token_data}")
 
                 if "," in token_data:
                     token_parts = token_data.split(",")
@@ -108,22 +108,30 @@ class QfnuAdmissionsClient:
                 else:
                     self.csrf_token = token_data
 
-                print(f"Session ID: {response_json.get('jessionid')}")
+                return True
             else:
                 print(f"获取CSRF Token失败: {response_json.get('msg', '未知错误')}")
-                raise Exception("无法获取CSRF Token")
+                return False
 
         except Exception as e:
             print(f"获取CSRF Token时发生错误: {e}")
-            raise
+            return False
 
     def get_admission_plan_data(
         self, province: str, year: str, subject_category: str, admission_type: str
     ):
         """
-        获取招生计划数据
+        获取招生计划数据（每次请求前重新获取CSRF Token）
         """
         try:
+            # 每次请求前重新获取CSRF Token
+            print(
+                f"为请求 {province} {year} {subject_category} {admission_type} 获取新的CSRF Token..."
+            )
+            if not self._get_csrf_token():
+                print("获取CSRF Token失败，跳过此次请求")
+                return None
+
             current_timestamp = str(int(time.time() * 1000))
 
             # 构建请求头
@@ -148,6 +156,7 @@ class QfnuAdmissionsClient:
             print(
                 f"正在请求招生计划数据: {province} {year} {subject_category} {admission_type}"
             )
+            print(f"使用CSRF Token: {self.csrf_token}")
             print(f"请求参数: {post_data}")
 
             response = self.session.post(
@@ -180,24 +189,70 @@ class QfnuAdmissionsClient:
             print(f"请求过程中发生错误: {e}")
             return None
 
-    def get_all_admission_plans(self, config_file_path="data/招生计划列表.json"):
+    def parse_config_data(self, config_data):
         """
-        根据配置文件获取所有招生计划数据
+        解析配置数据，提取省份和参数组合
+        """
+        ssmc_list = config_data.get("data", {}).get(
+            "ssmc_nf_klmc_sex_campus_zslx_list", []
+        )
+
+        province_combinations = {}
+
+        for item in ssmc_list:
+            for key, zslx_list in item.items():
+                # 解析键: "省份_年份_科目类别_sex_campus"
+                parts = key.split("_")
+                if len(parts) >= 4:
+                    province = parts[0]
+                    year = parts[1]
+                    subject_category = parts[2] if parts[2] else "未分类"
+
+                    if province not in province_combinations:
+                        province_combinations[province] = []
+
+                    # 为每个招生类型创建组合
+                    for admission_type in zslx_list:
+                        combination = {
+                            "nf": year,
+                            "klmc": subject_category,
+                            "zslx": admission_type,
+                        }
+                        province_combinations[province].append(combination)
+
+        return province_combinations
+
+    def get_all_admission_plans(self, config_file_path="招生计划列表.json"):
+        """
+        根据配置文件获取所有招生计划数据，每个省份保存为一个JSON文件
         """
         try:
             # 读取配置文件
             with open(config_file_path, "r", encoding="utf-8") as f:
                 config = json.load(f)
 
-            ssmc_nf_zslx_sex_campus_klmc_map = config.get(
-                "ssmc_nf_zslx_sex_campus_klmc_Map", {}
-            )
+            # 解析配置数据
+            province_combinations = self.parse_config_data(config)
 
-            all_data = {}
+            # 创建output目录
+            output_dir = "output"
+            os.makedirs(output_dir, exist_ok=True)
 
-            for province, combinations in ssmc_nf_zslx_sex_campus_klmc_map.items():
+            successful_provinces = 0
+            total_requests = 0
+
+            for province, combinations in province_combinations.items():
                 print(f"\n开始处理省份: {province}")
                 province_data = {}
+
+                # 添加省份信息
+                province_data["province"] = province
+                province_data["data"] = {}
+                province_data["summary"] = {
+                    "total_combinations": len(combinations),
+                    "successful_requests": 0,
+                    "failed_requests": 0,
+                }
 
                 for combo in combinations:
                     year = combo.get("nf")
@@ -209,6 +264,7 @@ class QfnuAdmissionsClient:
                         continue
 
                     print(f"  处理: {year}年 {subject_category} {admission_type}")
+                    total_requests += 1
 
                     # 获取数据
                     data = self.get_admission_plan_data(
@@ -218,44 +274,67 @@ class QfnuAdmissionsClient:
                     if data:
                         # 构建数据键
                         data_key = f"{year}_{subject_category}_{admission_type}"
-                        province_data[data_key] = data
+                        province_data["data"][data_key] = {
+                            "year": year,
+                            "subject_category": subject_category,
+                            "admission_type": admission_type,
+                            "plan_data": data,
+                        }
 
-                        # 保存单个文件
-                        safe_province = province.replace("/", "_")
-                        safe_year = year
-                        safe_category = subject_category.replace("/", "_")
-                        safe_type = admission_type.replace("/", "_")
+                        province_data["summary"]["successful_requests"] += 1
+                        print(f"    ✓ 成功获取数据")
+                    else:
+                        province_data["summary"]["failed_requests"] += 1
+                        print(f"    ✗ 获取数据失败")
 
-                        filename = f"招生计划_{safe_province}_{safe_year}_{safe_category}_{safe_type}.json"
-                        filepath = os.path.join(
-                            "data", "QFNU_data", "招生计划", filename
-                        )
+                # 保存省份数据到文件
+                if province_data["data"]:
+                    safe_province = province.replace("/", "_").replace("\\", "_")
+                    filename = f"{safe_province}_招生计划.json"
+                    filepath = os.path.join(output_dir, filename)
 
-                        # 创建目录
-                        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+                    with open(filepath, "w", encoding="utf-8") as f:
+                        json.dump(province_data, f, ensure_ascii=False, indent=2)
 
-                        with open(filepath, "w", encoding="utf-8") as f:
-                            json.dump(data, f, ensure_ascii=False, indent=2)
+                    successful_provinces += 1
+                    print(f"✓ 省份 {province} 的数据已保存到: {filepath}")
+                    print(
+                        f"  成功获取: {province_data['summary']['successful_requests']} 个组合"
+                    )
+                    print(
+                        f"  失败: {province_data['summary']['failed_requests']} 个组合"
+                    )
+                else:
+                    print(f"✗ 省份 {province} 未获取到任何数据")
 
-                        print(f"    已保存到: {filepath}")
+            # 生成总结报告
+            summary_report = {
+                "总计": {
+                    "处理省份数": len(province_combinations),
+                    "成功省份数": successful_provinces,
+                    "总请求数": total_requests,
+                    "生成时间": time.strftime("%Y-%m-%d %H:%M:%S"),
+                },
+                "省份列表": list(province_combinations.keys()),
+            }
 
-                    # 添加延迟避免频繁请求
-                    time.sleep(2)
-
-                if province_data:
-                    all_data[province] = province_data
-
-            # 保存汇总数据
-            summary_filepath = os.path.join("data", "QFNU_data", "招生计划汇总.json")
+            summary_filepath = os.path.join(output_dir, "招生计划获取报告.json")
             with open(summary_filepath, "w", encoding="utf-8") as f:
-                json.dump(all_data, f, ensure_ascii=False, indent=2)
+                json.dump(summary_report, f, ensure_ascii=False, indent=2)
 
-            print(f"\n所有数据获取完成，汇总文件保存到: {summary_filepath}")
-            return all_data
+            print(f"\n" + "=" * 50)
+            print(f"所有数据获取完成！")
+            print(f"成功处理省份: {successful_provinces}/{len(province_combinations)}")
+            print(f"总请求数: {total_requests}")
+            print(f"文件保存目录: {output_dir}")
+            print(f"总结报告: {summary_filepath}")
+            print(f"=" * 50)
+
+            return True
 
         except Exception as e:
             print(f"获取所有招生计划数据时发生错误: {e}")
-            return None
+            return False
 
 
 def main():
@@ -266,12 +345,12 @@ def main():
         client = QfnuAdmissionsClient()
 
         print("开始获取所有招生计划数据...")
-        all_data = client.get_all_admission_plans()
+        success = client.get_all_admission_plans()
 
-        if all_data:
-            print(f"成功获取了 {len(all_data)} 个省份的招生计划数据")
+        if success:
+            print("程序执行完成！")
         else:
-            print("未能获取到任何数据")
+            print("程序执行失败！")
 
     except Exception as e:
         print(f"程序执行失败: {e}")
