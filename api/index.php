@@ -101,6 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     </style>
 
     <div id="app">
+        <!-- 新生交流群弹窗已暂时关闭，如需开启请恢复此处代码 -->
+        <!--
         <div v-if="showGroupModal" class="modal-overlay">
             <div class="modal-card">
                 <h2 style="margin-bottom:12px;">加入新生交流群</h2>
@@ -115,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <button class="modal-btn" @click="showGroupModal=false">确定</button>
             </div>
         </div>
+        -->
         <div class="card">
             <h1>曲阜师范大学志愿帮填</h1>
             <div
