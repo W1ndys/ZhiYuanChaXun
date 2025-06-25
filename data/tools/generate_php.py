@@ -23,7 +23,7 @@ def process_province_data(province_name, admission_data_path, enrollment_plan_pa
     admission_data = load_json_file(admission_data_path)
     if not admission_data:
         print(f"  加载录取数据失败")
-        return None, None, None
+        return None, None, None, None
 
     print(f"  录取数据结构: {list(admission_data.keys())}")
 
@@ -39,6 +39,9 @@ def process_province_data(province_name, admission_data_path, enrollment_plan_pa
     area_types = []
     area_scores = {}
     subjects = {}
+
+    # 添加失败统计
+    plan_match_failures = []  # 存储计划数匹配失败的记录
 
     # 检查数据结构
     data_list = admission_data.get("数据", [])
@@ -123,31 +126,62 @@ def process_province_data(province_name, admission_data_path, enrollment_plan_pa
             print(f"      专业 {j+1}: {major_name}, 录取人数: {enrollment_count}")
 
             # 从招生计划获取2025年计划数（如果可用）
-            plan_count = enrollment_count  # 默认为2024年录取人数
+            plan_count = 0  # 默认为0，表示2025年没有招生计划
             if enrollment_plan:
-                # 新的数据结构：遍历 data 字段下的各个招生类型
-                plan_data = enrollment_plan.get("data", {})
-                for plan_key, plan_info in plan_data.items():
-                    # 检查科类是否匹配
-                    if plan_info.get("subject_category") == subject_category:
+                # 科类名称映射关系
+                subject_mapping = {"文史": "历史类", "理工": "物理类"}
+
+                # 尝试查找的科类列表（原名称 + 映射名称）
+                subject_categories_to_try = [subject_category]
+                if subject_category in subject_mapping:
+                    subject_categories_to_try.append(subject_mapping[subject_category])
+
+                plan_found = False
+                tried_keys = []  # 记录尝试过的键
+                for try_subject_category in subject_categories_to_try:
+                    # 构建2025年数据的键名：2025_科类_招生类型
+                    plan_key = f"2025_{try_subject_category}_{enrollment_type}"
+                    tried_keys.append(plan_key)
+                    print(f"        查找2025年计划键: {plan_key}")
+
+                    # 获取对应的招生计划数据
+                    plan_data = enrollment_plan.get("data", {})
+                    if plan_key in plan_data:
+                        plan_info = plan_data[plan_key]
                         # 获取招生计划总数数据
-                        zsjh_total = plan_info.get("plan_data", {}).get("zsjhTotal", [])
+                        zsjh_total = plan_info.get("plan_data", {}).get("zsjhList", [])
                         for plan_item in zsjh_total:
-                            plan_major_name = plan_item.get("zycc", "")  # 专业名称
+                            plan_major_name = plan_item.get("zydhmc", "")  # 专业名称
                             # 匹配专业名称（可能需要模糊匹配，因为名称格式可能不完全一致）
                             if (
                                 plan_major_name == major_name
                                 or major_name in plan_major_name
                             ):
-                                plan_count = plan_item.get("zsjhs", enrollment_count)
+                                plan_count = plan_item.get("zsjhs", 0)
                                 print(
-                                    f"        找到2025年计划数: {plan_count} (匹配: {plan_major_name})"
+                                    f"        找到2025年计划数: {plan_count} (匹配: {plan_major_name}, 使用科类: {try_subject_category})"
                                 )
+                                plan_found = True
                                 break
-                        if (
-                            plan_count != enrollment_count
-                        ):  # 如果找到了计划数就跳出外层循环
+                        if plan_found:
                             break
+                    else:
+                        print(f"        未找到对应的2025年计划数据: {plan_key}")
+
+                # 如果没有找到计划数，记录失败信息
+                if not plan_found:
+                    failure_info = {
+                        "省份": province_name,
+                        "科类": subject_category,
+                        "招生类型": enrollment_type,
+                        "专业名称": major_name,
+                        "尝试的键": tried_keys,
+                        "2024录取人数": enrollment_count,
+                    }
+                    plan_match_failures.append(failure_info)
+                    print(f"        所有尝试的科类都未找到2025年计划数据，设置为0")
+            else:
+                print(f"        没有2025年招生计划文件，设置计划数为0")
 
             # 转换数据类型
             try:
@@ -178,7 +212,7 @@ def process_province_data(province_name, admission_data_path, enrollment_plan_pa
     print(
         f"  处理完成 - 科类: {area_types}, 总专业数: {sum(len(subjects[k]) for k in subjects)}"
     )
-    return area_types, area_scores, subjects
+    return area_types, area_scores, subjects, plan_match_failures
 
 
 def generate_php_code(all_data):
@@ -254,6 +288,7 @@ def main():
 
     all_data = {}
     processed_summary = []  # 存储省份-科类信息
+    all_failures = []  # 存储所有失败记录
 
     # 遍历所有省份文件
     json_files = list(admission_data_dir.glob("*.json"))
@@ -269,7 +304,7 @@ def main():
         print(f"录取数据文件: {admission_file}")
         print(f"招生计划文件: {enrollment_plan_file}")
 
-        area_types, area_scores, subjects = process_province_data(
+        area_types, area_scores, subjects, failures = process_province_data(
             province_name, admission_file, enrollment_plan_file
         )
 
@@ -284,6 +319,10 @@ def main():
             # 添加到总结
             for subject_category in area_types:
                 processed_summary.append(f"{province_name}-{subject_category}")
+
+            # 收集失败记录
+            if failures:
+                all_failures.extend(failures)
         else:
             print(f"  - 处理失败或无有效数据")
 
@@ -305,6 +344,36 @@ def main():
         print("已处理的省份-科类:")
         for item in sorted(processed_summary):
             print(f"  - {item}")
+
+        # 输出失败统计
+        if all_failures:
+            print(f"\n=== 2025年计划数匹配失败统计 ===")
+            print(f"总失败专业数: {len(all_failures)}")
+
+            # 按省份分组统计
+            failure_by_province = {}
+            for failure in all_failures:
+                province = failure["省份"]
+                if province not in failure_by_province:
+                    failure_by_province[province] = []
+                failure_by_province[province].append(failure)
+
+            for province, province_failures in failure_by_province.items():
+                print(f"\n{province} (失败 {len(province_failures)} 个专业):")
+                for failure in province_failures[:5]:  # 只显示前5个
+                    print(
+                        f"  - {failure['科类']} | {failure['专业名称']} | 尝试键: {failure['尝试的键']}"
+                    )
+                if len(province_failures) > 5:
+                    print(f"  ... 还有 {len(province_failures) - 5} 个失败记录")
+
+            # 保存详细失败记录到文件
+            failure_file = "plan_match_failures.json"
+            with open(failure_file, "w", encoding="utf-8") as f:
+                json.dump(all_failures, f, ensure_ascii=False, indent=2)
+            print(f"\n详细失败记录已保存到: {failure_file}")
+        else:
+            print(f"\n=== 全部匹配成功！===")
     else:
         print("\n没有成功处理任何数据")
 
