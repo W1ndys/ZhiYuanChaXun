@@ -148,6 +148,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     </a>
                 </div>
             </div>
+            <div
+                style="background: #e3f2fd; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; font-size: 1.02em; line-height: 1.7;">
+                <div style="font-weight: bold; color: #1976d2; margin-bottom: 6px;">
+                    相关资料
+                </div>
+                <div>
+                    <a href="https://zsb.qfnu.edu.cn/static/front/qfnu/basic/html_cms/frontViewArticle.html?id=68fad3a6d1c9426fb8693ee043883b12#/"
+                        target="_blank" rel="noopener noreferrer"
+                        style="color:#1976d2;text-decoration:underline;">
+                        曲阜师范大学2025年夏季高考选考科目要求
+                    </a>
+                </div>
+            </div>
             <p>
                 <span
                     style="color: #d32f2f; font-weight: bold; font-size: 1.15em; background: #fffbe6; padding: 4px 8px; border-radius: 6px; display: inline-block;">
